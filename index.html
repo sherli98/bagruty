@@ -329,10 +329,72 @@ input[type=search]{width:100%;padding:12px 16px;background:var(--sf);border:1.5p
 <div class="sec">אודות</div>
 <div class="cflat">
   <div class="row"><span style="font-weight:600;font-size:14px">גרסה</span><span style="color:var(--tx3);font-size:14px">1.0.0</span></div>
-  <div class="row"><span style="font-weight:600;font-size:14px">מילים</span><span style="color:var(--tx3);font-size:14px">500+</span></div>
+  <div class="row"><span style="font-weight:600;font-size:14px">מילים</span><span style="color:var(--tx3);font-size:14px">499+</span></div>
   <div class="row"><span style="font-weight:600;font-size:14px">נושאים</span><span style="color:var(--tx3);font-size:14px">21</span></div>
+  <div class="row" onclick="goTo('terms')" style="cursor:pointer"><span style="font-weight:600;font-size:14px">תנאי שימוש</span><span style="color:var(--tx4);font-size:18px">›</span></div>
+  <div class="row" onclick="goTo('privacy')" style="cursor:pointer"><span style="font-weight:600;font-size:14px">מדיניות פרטיות</span><span style="color:var(--tx4);font-size:18px">›</span></div>
 </div>
-<div style="text-align:center;padding:24px 0 8px;color:var(--tx3);font-size:12px">בגרותי © 2025 • נבנה עם ❤️</div>
+<div style="text-align:center;padding:24px 0 8px;color:var(--tx3);font-size:12px">בגרותי © 2026 • נבנה עם שרלי 💜</div>
+</div>
+
+<!-- TERMS -->
+<div id="s-terms" class="scr">
+<div class="hdr"><div class="hrow"><button class="btnb" onclick="goTo('settings')">← חזור</button><span style="font-weight:700;font-size:15px">תנאי שימוש</span><div style="width:60px"></div></div></div>
+<div class="card">
+  <div style="font-size:15px;font-weight:800;margin-bottom:12px;color:var(--tx)">תנאי שימוש — בגרותי</div>
+  <div style="font-size:12px;color:var(--tx3);margin-bottom:16px">עדכון אחרון: ינואר 2026</div>
+
+  <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:6px">1. קבלת התנאים</div>
+  <div style="font-size:13px;color:var(--tx2);line-height:1.7;margin-bottom:14px">השימוש באפליקציה בגרותי מהווה הסכמה לתנאי שימוש אלו. אם אינך מסכים לתנאים, אנא הפסק להשתמש באפליקציה.</div>
+
+  <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:6px">2. השירות</div>
+  <div style="font-size:13px;color:var(--tx2);line-height:1.7;margin-bottom:14px">בגרותי היא אפליקציה ללימוד אנגלית המיועדת לתלמידים ישראלים. האפליקציה מציעה תוכן חינמי מוגבל ותוכן פרימיום בתשלום מנוי חודשי.</div>
+
+  <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:6px">3. מנוי פרימיום</div>
+  <div style="font-size:13px;color:var(--tx2);line-height:1.7;margin-bottom:14px">המנוי החודשי עולה ₪19.90 לחודש. ניתן לבטל בכל עת. החיוב מתבצע מדי חודש. לאחר ביטול, הגישה לפרימיום תסתיים בסוף תקופת החיוב הנוכחית.</div>
+
+  <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:6px">4. שימוש מותר</div>
+  <div style="font-size:13px;color:var(--tx2);line-height:1.7;margin-bottom:14px">השימוש באפליקציה מיועד לשימוש אישי בלבד. אין להעתיק, להפיץ או למכור את תוכן האפליקציה. אין לבצע הנדסה לאחור של האפליקציה.</div>
+
+  <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:6px">5. הגבלת אחריות</div>
+  <div style="font-size:13px;color:var(--tx2);line-height:1.7;margin-bottom:14px">האפליקציה מסופקת "כפי שהיא". איננו אחראים לנזקים הנובעים משימוש באפליקציה. איננו מתחייבים לזמינות רציפה של השירות.</div>
+
+  <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:6px">6. שינויים בתנאים</div>
+  <div style="font-size:13px;color:var(--tx2);line-height:1.7;margin-bottom:14px">אנו שומרים את הזכות לשנות תנאים אלו בכל עת. שינויים מהותיים יפורסמו באפליקציה. המשך השימוש מהווה הסכמה לתנאים המעודכנים.</div>
+
+  <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:6px">7. יצירת קשר</div>
+  <div style="font-size:13px;color:var(--tx2);line-height:1.7">לשאלות ופניות: bagruty.app@gmail.com</div>
+</div>
+</div>
+
+<!-- PRIVACY -->
+<div id="s-privacy" class="scr">
+<div class="hdr"><div class="hrow"><button class="btnb" onclick="goTo('settings')">← חזור</button><span style="font-weight:700;font-size:15px">מדיניות פרטיות</span><div style="width:60px"></div></div></div>
+<div class="card">
+  <div style="font-size:15px;font-weight:800;margin-bottom:12px;color:var(--tx)">מדיניות פרטיות — בגרותי</div>
+  <div style="font-size:12px;color:var(--tx3);margin-bottom:16px">עדכון אחרון: ינואר 2026</div>
+
+  <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:6px">1. מידע שאנו אוספים</div>
+  <div style="font-size:13px;color:var(--tx2);line-height:1.7;margin-bottom:14px">האפליקציה שומרת מידע על ההתקדמות שלך (מילים שנלמדו, XP, רצף) באופן מקומי על המכשיר שלך בלבד. אנו לא אוספים מידע אישי מזהה.</div>
+
+  <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:6px">2. אחסון מידע</div>
+  <div style="font-size:13px;color:var(--tx2);line-height:1.7;margin-bottom:14px">כל הנתונים נשמרים ב-LocalStorage של הדפדפן שלך. המידע לא נשלח לשרתים חיצוניים. מחיקת האפליקציה תמחק את כל הנתונים.</div>
+
+  <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:6px">3. תשלומים</div>
+  <div style="font-size:13px;color:var(--tx2);line-height:1.7;margin-bottom:14px">עיבוד התשלומים מתבצע דרך Gumroad. אנו לא שומרים פרטי תשלום. למדיניות הפרטיות של Gumroad ראה gumroad.com/privacy.</div>
+
+  <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:6px">4. עוגיות ומעקב</div>
+  <div style="font-size:13px;color:var(--tx2);line-height:1.7;margin-bottom:14px">האפליקציה אינה משתמשת בעוגיות מעקב. אנו לא משתמשים בכלי ניתוח שמזהים משתמשים ספציפיים.</div>
+
+  <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:6px">5. ילדים מתחת לגיל 13</div>
+  <div style="font-size:13px;color:var(--tx2);line-height:1.7;margin-bottom:14px">האפליקציה מיועדת לגיל 13 ומעלה. אנו לא אוספים ביודעין מידע מילדים מתחת לגיל 13.</div>
+
+  <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:6px">6. זכויותיך</div>
+  <div style="font-size:13px;color:var(--tx2);line-height:1.7;margin-bottom:14px">יש לך זכות למחוק את כל הנתונים שלך בכל עת דרך הגדרות האפליקציה → "איפוס התקדמות".</div>
+
+  <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:6px">7. יצירת קשר</div>
+  <div style="font-size:13px;color:var(--tx2);line-height:1.7">לשאלות בנושא פרטיות: bagruty.app@gmail.com</div>
+</div>
 </div>
 
 <!-- PAYWALL -->
@@ -367,7 +429,7 @@ input[type=search]{width:100%;padding:12px 16px;background:var(--sf);border:1.5p
   <button class="nb on" id="nb-home" onclick="goTo('home')"><i>🏠</i><span>בית</span></button>
   <button class="nb" id="nb-flashcard" onclick="goTo('flashcard')"><i>🃏</i><span>כרטיסיות</span></button>
   <button class="nb" id="nb-quiz" onclick="startQuiz()"><i>🎯</i><span>חידון</span></button>
-  <button class="nb" id="nb-reverse" onclick="goTo('reverse')"><i>🔄</i><span>הפוך</span></button>
+  <button class="nb" id="nb-fill" onclick="startFill()"><i>✍️</i><span>משפטים</span></button>
   <button class="nb" id="nb-settings" onclick="goTo('settings')"><i>⚙️</i><span>הגדרות</span></button>
 </nav>
 
@@ -952,8 +1014,36 @@ function ll(l){return l===1?'🟢 בסיסי':l===2?'🟡 בינוני':'🔴 מ
 function ft(t){return Math.floor(t/60)+':'+(t%60<10?'0':'')+t%60;}
 function e(id){return document.getElementById(id);}
 
-// NAVIGATION
-var NONAV=['quiz-done','reverse-done','fill-done','match-done'];
+// SOUNDS
+function playCorrect(){
+  try{
+    var ctx=new(window.AudioContext||window.webkitAudioContext)();
+    var o=ctx.createOscillator();var g=ctx.createGain();
+    o.connect(g);g.connect(ctx.destination);
+    o.frequency.setValueAtTime(523,ctx.currentTime);
+    o.frequency.setValueAtTime(659,ctx.currentTime+0.1);
+    o.frequency.setValueAtTime(784,ctx.currentTime+0.2);
+    g.gain.setValueAtTime(0.3,ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.5);
+    o.start(ctx.currentTime);o.stop(ctx.currentTime+0.5);
+  }catch(e){}
+}
+function playWrong(){
+  try{
+    var ctx=new(window.AudioContext||window.webkitAudioContext)();
+    var o=ctx.createOscillator();var g=ctx.createGain();
+    o.connect(g);g.connect(ctx.destination);
+    o.type='sine';
+    o.frequency.setValueAtTime(300,ctx.currentTime);
+    o.frequency.setValueAtTime(250,ctx.currentTime+0.15);
+    g.gain.setValueAtTime(0.15,ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.3);
+    o.start(ctx.currentTime);o.stop(ctx.currentTime+0.3);
+  }catch(e){}
+  if(navigator.vibrate)navigator.vibrate(80);
+}
+
+var NONAV=['quiz-done','reverse-done','fill-done','match-done','terms','privacy'];
 
 function goTo(name){
   var all=document.querySelectorAll('.scr');
@@ -1139,21 +1229,25 @@ function startQuiz(){
 }
 function renderQuiz(){
   var w=G.qw[G.qi];if(!w)return;
-  e('q-c').textContent=(G.qi+1)+'/10';
+  e('q-c').textContent=(G.qi+1)+'/10 • '+G.qs+" נק'";
   e('q-p').style.width=(G.qi/10*100)+'%';
   e('q-lv').textContent=ll(w.l);
   e('q-w').textContent=w.en;e('q-ex').textContent=w.ex;
   e('q-enc').style.display='none';e('q-to').style.display='none';
   e('q-w').style.animation='none';
   var os=go(w,av());
-  var h='';for(var i=0;i<os.length;i++){h+='<button class="opt" onclick="ansQ('+os[i].id+')">'+os[i].he+'</button>';}
+  var h='';
+  for(var i=0;i<os.length;i++){
+    h+='<button class="opt" id="qopt-'+os[i].id+'" onclick="ansQ('+os[i].id+','+w.id+')">'+os[i].he+'</button>';
+  }
   e('q-opts').innerHTML=h;
 }
 function runTimer(){
+  if(G.qtm){clearInterval(G.qtm);G.qtm=null;}
   G.qt=10;updTimer();
   G.qtm=setInterval(function(){
     G.qt--;updTimer();
-    if(G.qt<=0){clearInterval(G.qtm);qTO();}
+    if(G.qt<=0){clearInterval(G.qtm);G.qtm=null;qTO();}
   },1000);
 }
 function updTimer(){
@@ -1165,6 +1259,7 @@ function updTimer(){
   e('q-tt').textContent=t;e('q-tt').style.color=col;
 }
 function qTO(){
+  if(G.qtm){clearInterval(G.qtm);G.qtm=null;}
   var w=G.qw[G.qi];
   e('q-to').textContent='⏰ נגמר הזמן! התשובה: '+w.he;
   e('q-to').style.display='block';
@@ -1173,23 +1268,22 @@ function qTO(){
   for(var i=0;i<btns.length;i++)btns[i].disabled=true;
   setTimeout(function(){nextQ();},1300);
 }
-function ansQ(oid){
-  clearInterval(G.qtm);
-  var w=G.qw[G.qi];var ok=oid===w.id;
-  var a=av();
+function ansQ(oid,wid){
+  if(G.qtm){clearInterval(G.qtm);G.qtm=null;}
+  var ok=oid===wid;
   var btns=e('q-opts').querySelectorAll('.opt');
-  for(var i=0;i<btns.length;i++){
-    btns[i].disabled=true;
-    var bw=null;
-    for(var j=0;j<a.length;j++){if(a[j].he===btns[i].textContent){bw=a[j];break;}}
-    if(bw&&bw.id===w.id)btns[i].classList.add('ok');
-    else if(bw&&bw.id===oid&&!ok)btns[i].classList.add('no');
-  }
-  if(ok){G.qs++;reward(5,10);}
-  else{e('q-w').style.animation='shake .5s';e('q-enc').textContent=enc();e('q-enc').style.display='block';}
+  for(var i=0;i<btns.length;i++){btns[i].disabled=true;}
+  var correctBtn=e('qopt-'+wid);
+  var clickedBtn=e('qopt-'+oid);
+  if(correctBtn)correctBtn.classList.add('ok');
+  if(clickedBtn&&!ok)clickedBtn.classList.add('no');
+  if(ok){G.qs++;reward(5,10);playCorrect();}
+  else{playWrong();e('q-w').style.animation='shake .5s';e('q-enc').textContent=enc();e('q-enc').style.display='block';}
+  e('q-c').textContent=(G.qi+1)+'/10 • '+G.qs+" נק'";
   setTimeout(function(){nextQ();},1000);
 }
 function nextQ(){
+  if(G.qtm){clearInterval(G.qtm);G.qtm=null;}
   G.qi++;
   if(G.qi>=10)finQ();
   else{renderQuiz();runTimer();}
@@ -1214,27 +1308,30 @@ function startReverse(){
 }
 function renderRev(){
   var w=G.rw[G.ri];if(!w)return;
-  e('r-c').textContent=(G.ri+1)+'/10';
+  e('r-c').textContent=(G.ri+1)+'/10 • '+G.rs+" נק'";
   e('r-p').style.width=(G.ri/10*100)+'%';
   e('r-w').textContent=w.he;e('r-ex').textContent=w.ex;
   e('r-enc').style.display='none';
+  e('r-w').style.animation='none';
   var os=go(w,av());
-  var h='';for(var i=0;i<os.length;i++){h+='<button class="opt ltr" onclick="ansR('+os[i].id+')">'+os[i].en+'</button>';}
+  var h='';
+  for(var i=0;i<os.length;i++){
+    h+='<button class="opt ltr" id="ropt-'+os[i].id+'" onclick="ansR('+os[i].id+','+w.id+')">'+os[i].en+'</button>';
+  }
   e('r-opts').innerHTML=h;
 }
-function ansR(oid){
-  var w=G.rw[G.ri];var ok=oid===w.id;
-  var a=av();
+function ansR(oid,wid){
+  var w=G.rw[G.ri];
+  var ok=oid===wid;
   var btns=e('r-opts').querySelectorAll('.opt');
-  for(var i=0;i<btns.length;i++){
-    btns[i].disabled=true;
-    var bw=null;
-    for(var j=0;j<a.length;j++){if(a[j].en===btns[i].textContent){bw=a[j];break;}}
-    if(bw&&bw.id===w.id)btns[i].classList.add('ok');
-    else if(bw&&bw.id===oid&&!ok)btns[i].classList.add('no');
-  }
-  if(ok){G.rs++;reward(5,10);}
-  else{e('r-enc').textContent=enc();e('r-enc').style.display='block';}
+  for(var i=0;i<btns.length;i++){btns[i].disabled=true;}
+  var correctBtn=e('ropt-'+wid);
+  var clickedBtn=e('ropt-'+oid);
+  if(correctBtn)correctBtn.classList.add('ok');
+  if(clickedBtn&&!ok)clickedBtn.classList.add('no');
+  if(ok){G.rs++;reward(5,10);playCorrect();}
+  else{playWrong();e('r-w').style.animation='shake .5s';e('r-enc').textContent=enc();e('r-enc').style.display='block';}
+  e('r-c').textContent=(G.ri+1)+'/10 • '+G.rs+" נק'";
   setTimeout(function(){
     G.ri++;
     if(G.ri>=10){reward(20,40);e('rd-t').textContent=G.rs>=8?'🏆':G.rs>=5?'⭐':'💪';e('rd-s').textContent=G.rs+'/10';goTo('reverse-done');}
@@ -1255,20 +1352,22 @@ function renderFill(){
   e('f-s').innerHTML=pts[0]+'<span class="bl" id="f-bl">___</span>'+pts[1];
   e('f-h').textContent='רמז: '+q.h;
   e('f-enc').style.display='none';
-  var h='';for(var i=0;i<q.o.length;i++){h+='<button class="fo" onclick="ansF(\''+q.o[i]+'\')">'+q.o[i]+'</button>';}
+  // ערבב את האפשרויות כדי שהתשובה הנכונה לא תהיה תמיד ראשונה
+  var shuffled=sf(q.o);
+  var h='';for(var i=0;i<shuffled.length;i++){h+='<button class="fo" onclick="ansF(\''+shuffled[i]+'\',\''+q.a+'\')">'+shuffled[i]+'</button>';}
   e('f-opts').innerHTML=h;
 }
-function ansF(opt){
-  var q=G.fw[G.fi];var ok=opt===q.a;
+function ansF(opt,correct){
+  var ok=opt===correct;
   var bl=e('f-bl');bl.textContent=opt;bl.className='bl '+(ok?'ok':'no');
   var btns=e('f-opts').querySelectorAll('.fo');
   for(var i=0;i<btns.length;i++){
     btns[i].disabled=true;
-    if(btns[i].textContent===q.a)btns[i].classList.add('ok');
+    if(btns[i].textContent===correct)btns[i].classList.add('ok');
     else if(btns[i].textContent===opt&&!ok)btns[i].classList.add('no');
   }
-  if(ok){G.fs++;reward(5,10);}
-  else{e('f-enc').textContent=enc();e('f-enc').style.display='block';}
+  if(ok){G.fs++;reward(5,10);playCorrect();}
+  else{playWrong();e('f-enc').textContent=enc();e('f-enc').style.display='block';}
   setTimeout(function(){
     G.fi++;
     if(G.fi>=G.fw.length){reward(20,30);e('fd-t').textContent=G.fs>=6?'🌟':G.fs>=4?'⭐':'💪';e('fd-s').textContent=G.fs+'/'+G.fw.length;goTo('fill-done');}
