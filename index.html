@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<!-- BAGRUTY v3.0 - NO GENDER SCREEN -->
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>בגרותי v3</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+button,input{font-family:'Heebo',sans-serif;cursor:pointer}
+:root{
+  --p:#7C3AED;--pl:rgba(124,58,237,.12);
+  --bg:#F2F2F7;--sf:#fff;--sf2:#F2F2F7;
+  --tx:#1C1C1E;--tx2:#3C3C43;--tx3:#8E8E93;--tx4:#C7C7CC;
+  --bd:rgba(60,60,67,.12);--sh:rgba(0,0,0,.06);
+  --gn:#34C759;--rd:#FF3B30;--or:#FF9500;
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#000;--sf:#1C1C1E;--sf2:#2C2C2E;
+  --tx:#fff;--tx2:#EBEBF5;--tx3:#8E8E93;--tx4:#3A3A3C;
+  --bd:rgba(255,255,255,.1);--sh:rgba(0,0,0,.4);
+}}
+html,body{background:var(--bg);color:var(--tx);font-family:'Heebo',sans-serif;min-height:100vh}
+body{max-width:430px;margin:0 auto}
+.scr{display:none;min-height:100vh;background:var(--bg);padding:14px 16px 90px}
+.hdr{background:var(--sf);padding:12px 18px;border-bottom:1px solid var(--bd);position:sticky;top:0;z-index:50}
+.hrow{display:flex;justify-content:space-between;align-items:center}
+.nav{display:flex;background:var(--sf);border-top:1px solid var(--bd);position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;z-index:50}
+.nb{flex:1;padding:10px 0 8px;background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--tx4);font-size:9px;font-weight:500}
+.nb.on{color:var(--p);font-weight:700}
+.nb i{font-size:20px;font-style:normal}
+.card{background:var(--sf);border-radius:14px;padding:14px 16px;margin-bottom:8px;box-shadow:0 1px 4px var(--sh)}
+.cflat{background:var(--sf);border-radius:14px;margin-bottom:8px;overflow:hidden;box-shadow:0 1px 4px var(--sh)}
+.row{display:flex;align-items:center;gap:14px;padding:15px 16px}
+.row+.row{border-top:1px solid var(--bd)}
+.ib{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0}
+.sec{font-size:11px;font-weight:700;color:var(--tx3);margin:16px 4px 6px;letter-spacing:.5px}
+.btn{background:var(--p);border:none;border-radius:14px;padding:15px;color:#fff;font-size:16px;font-weight:700;width:100%;box-shadow:0 4px 14px rgba(124,58,237,.35);margin-bottom:10px}
+.btng{background:var(--sf2);border:none;border-radius:14px;padding:15px;color:var(--p);font-size:15px;font-weight:600;width:100%;margin-bottom:10px}
+.btnb{background:none;border:none;color:var(--p);font-size:14px;font-weight:600}
+.btns{background:var(--p);border:none;border-radius:10px;padding:6px 14px;color:#fff;font-size:12px;font-weight:700}
+.opt{width:100%;padding:13px 16px;border-radius:12px;border:1.5px solid var(--bd);background:var(--sf);color:var(--tx);font-size:16px;font-weight:600;margin-bottom:8px;text-align:right;direction:rtl;transition:all .15s}
+.opt.ok{border-color:var(--gn);background:rgba(52,199,89,.12);color:var(--gn)}
+.opt.no{border-color:var(--rd);background:rgba(255,59,48,.12);color:var(--rd)}
+.opt.ltr{text-align:left;direction:ltr}
+.prog{height:4px;background:var(--sf2);border-radius:2px;overflow:hidden;margin-bottom:14px}
+.pf{height:100%;background:var(--p);border-radius:2px;transition:width .3s}
+.tag{font-size:9px;font-weight:700;color:var(--p);background:var(--pl);padding:2px 8px;border-radius:6px;white-space:nowrap}
+.ttag{padding:5px 12px;border-radius:20px;border:1px solid var(--bd);background:var(--sf2);color:var(--tx3);font-size:11px;font-weight:500;white-space:nowrap;transition:all .15s}
+.ttag.on{background:var(--pl);border-color:var(--p);color:var(--p);font-weight:700}
+.ctag{padding:6px 14px;border-radius:20px;border:none;background:var(--sf2);color:var(--tx3);font-size:12px;font-weight:500;white-space:nowrap;transition:all .15s}
+.ctag.on{background:var(--p);color:#fff}
+.sr{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:12px;scrollbar-width:none}
+.sr::-webkit-scrollbar{display:none}
+.spk{width:32px;height:32px;border-radius:9px;background:var(--sf2);border:none;color:var(--tx3);font-size:14px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+.spk.on{background:var(--p);color:#fff}
+.fcw{height:258px;perspective:1000px;margin-bottom:14px;cursor:pointer}
+.fc{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .45s;border-radius:20px}
+.fc.flip{transform:rotateY(180deg)}
+.fcf{position:absolute;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;box-shadow:0 4px 20px var(--sh)}
+.fcfr{background:var(--sf)}
+.fcbk{background:linear-gradient(145deg,#5B21B6,#7C3AED);transform:rotateY(180deg)}
+.mb{padding:12px 10px;border-radius:12px;border:1.5px solid var(--bd);background:var(--sf);color:var(--tx);font-size:14px;font-weight:600;text-align:center;transition:all .15s;min-height:50px;display:flex;align-items:center;justify-content:center}
+.mb.sel{border-color:var(--p);background:var(--pl);color:var(--p)}
+.mb.dn{border-color:var(--gn);background:rgba(52,199,89,.1);color:var(--gn);opacity:.6}
+.mb.bd{border-color:var(--rd);background:rgba(255,59,48,.1);color:var(--rd)}
+.fo{padding:13px 10px;border-radius:12px;border:1px solid var(--bd);background:var(--sf);color:var(--tx);font-size:15px;font-weight:600;transition:all .15s}
+.fo.ok{border-color:var(--gn);background:rgba(52,199,89,.1);color:var(--gn)}
+.fo.no{border-color:var(--rd);background:rgba(255,59,48,.1);color:var(--rd)}
+.bl{background:var(--sf2);border-radius:8px;padding:2px 12px;border:2px solid var(--bd);color:var(--tx3);min-width:70px;display:inline-block;text-align:center;transition:all .2s}
+.bl.ok{background:rgba(52,199,89,.1);border-color:var(--gn);color:var(--gn)}
+.bl.no{background:rgba(255,59,48,.1);border-color:var(--rd);color:var(--rd)}
+.wr{background:var(--sf);border-radius:12px;padding:12px 14px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 1px 3px var(--sh)}
+.lb{width:28px;height:28px;border-radius:8px;background:var(--sf2);border:1px solid var(--bd);color:var(--tx4);font-size:14px;display:flex;align-items:center;justify-content:center}
+.lb.on{background:rgba(52,199,89,.12);border-color:var(--gn);color:var(--gn)}
+input[type=search]{width:100%;padding:12px 16px;background:var(--sf);border:1.5px solid var(--bd);border-radius:12px;color:var(--tx);font-size:15px;outline:none;margin-bottom:10px;direction:rtl}
+.tgl{position:relative;width:50px;height:28px;flex-shrink:0;cursor:pointer}
+.ttr{position:absolute;inset:0;border-radius:28px;background:var(--tx4);transition:.2s}
+.ttr.on{background:var(--gn)}
+.ttr span{position:absolute;height:22px;width:22px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.2s;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.ttr.on span{transform:translateX(22px)}
+.pw{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:200;display:none;align-items:flex-end;justify-content:center}
+.pws{background:var(--sf);border-radius:24px 24px 0 0;padding:28px 24px 48px;width:100%;max-width:430px}
+.toast{position:fixed;top:72px;left:50%;transform:translateX(-50%) translateY(-16px);background:var(--tx);color:var(--bg);border-radius:14px;padding:11px 18px;z-index:300;white-space:nowrap;display:none;align-items:center;gap:8px;font-weight:700;font-size:13px;box-shadow:0 6px 20px rgba(0,0,0,.25);opacity:0;transition:opacity .2s,transform .2s;pointer-events:none}
+.toast.on{display:flex;opacity:1;transform:translateX(-50%) translateY(0)}
+.sc{text-align:center;padding:40px 20px}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+</style>
+</head>
+<body>
+
+<!-- HOME -->
+<div id="s-home" class="scr">
+<div class="hdr">
+  <div class="hrow">
+    <div style="width:60px"></div>
+    <div style="display:flex;align-items:center;gap:9px">
+      <div style="width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#5B21B6,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:16px">📖</div>
+      <span style="font-size:22px;font-weight:900;color:var(--p);letter-spacing:-.5px">בגרותי</span>
+    </div>
+    <div style="width:60px"></div>
+  </div>
+  <div id="h-sub" style="text-align:center;font-size:11px;color:var(--tx3);margin-top:3px">בוא ללמוד אנגלית! 🚀</div>
+</div>
+<div class="card">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px">
+    <div style="display:flex;align-items:center;gap:6px"><span>⚡</span><span style="font-weight:700;font-size:14px" id="h-lv">רמה 1</span></div>
+    <div style="display:flex;align-items:center;gap:5px"><span>🪙</span><span style="font-weight:700;font-size:14px" id="h-co">0</span></div>
+  </div>
+  <div class="prog"><div class="pf" id="h-xp" style="width:0%"></div></div>
+  <div style="font-size:10px;color:var(--tx3)" id="h-xt">0/100 XP</div>
+</div>
+<div class="card" id="h-stk">
+  <div style="display:flex;align-items:center;gap:12px">
+    <span style="font-size:30px">🔥</span>
+    <div style="flex:1">
+      <div style="font-weight:800;font-size:18px;line-height:1" id="h-sd">0 ימים</div>
+      <div style="font-size:11px;color:var(--tx3);margin-top:2px" id="h-ss">השלם חידון לשמור על הרצף</div>
+    </div>
+    <button class="btns" id="h-sb" onclick="startQuiz()">התחל ←</button>
+  </div>
+</div>
+<div style="display:flex;gap:8px;margin-bottom:8px">
+  <div class="card" style="flex:1;text-align:center;padding:12px 8px;margin:0"><div style="font-size:22px;font-weight:800" id="h-w">50</div><div style="font-size:10px;color:var(--tx3);margin-top:2px">מילים</div></div>
+  <div class="card" style="flex:1;text-align:center;padding:12px 8px;margin:0"><div style="font-size:22px;font-weight:800" id="h-l">0</div><div style="font-size:10px;color:var(--tx3);margin-top:2px">נלמדו</div></div>
+  <div class="card" style="flex:1;text-align:center;padding:12px 8px;margin:0"><div style="font-size:22px;font-weight:800" id="h-st">0</div><div style="font-size:10px;color:var(--tx3);margin-top:2px">רצף</div></div>
+</div>
+<div id="h-pb" onclick="openPaywall()" style="background:linear-gradient(135deg,#5B21B6,#7C3AED);border-radius:14px;padding:14px 16px;margin-bottom:8px;cursor:pointer;display:flex;align-items:center;gap:12px">
+  <span style="font-size:26px">👑</span>
+  <div style="flex:1"><div style="font-weight:800;font-size:15px;color:#fff">שדרג לפרימיום</div><div style="font-size:12px;color:rgba(255,255,255,.75)">500 מילים • 21 נושאים • ₪19.90/חודש</div></div>
+  <span style="color:rgba(255,255,255,.6);font-size:18px">›</span>
+</div>
+<div id="h-pa" style="display:none;background:rgba(52,199,89,.1);border:1.5px solid var(--gn);border-radius:14px;padding:12px 16px;margin-bottom:8px;flex-direction:row;align-items:center;gap:10px">
+  <span>👑</span><span style="font-weight:700;font-size:14px;color:var(--gn)">פרימיום פעיל — 500 מילים!</span>
+</div>
+<div id="h-menu"></div>
+</div>
+
+<!-- FLASHCARD -->
+<div id="s-flashcard" class="scr">
+<div class="hdr"><div class="hrow"><button class="btnb" onclick="goTo('home')">← חזור</button><span style="font-weight:700;font-size:15px">כרטיסיות 🃏</span><span style="font-size:12px;color:var(--tx3)" id="fc-c">1/50</span></div></div>
+<div class="sr" id="fc-cats" style="margin-top:14px"></div>
+<div class="sr" id="fc-tps"></div>
+<div class="prog"><div class="pf" id="fc-p" style="width:2%"></div></div>
+<div class="fcw" onclick="flipCard()">
+  <div class="fc" id="fc">
+    <div class="fcf fcfr">
+      <div class="tag" id="fc-tp" style="margin-bottom:14px">Verb</div>
+      <div style="font-size:34px;font-weight:800;text-align:center;margin-bottom:16px;color:var(--tx)" id="fc-en">eat</div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <button class="spk" id="fc-spk" onclick="event.stopPropagation();speakW()">🔈</button>
+        <span style="font-size:11px;color:var(--tx3)">הקש לשמוע</span>
+      </div>
+      <div style="font-size:10px;color:var(--tx4);margin-top:14px">הקש להפוך 👆</div>
+    </div>
+    <div class="fcf fcbk">
+      <div style="font-size:28px;font-weight:800;text-align:center;color:#fff;margin-bottom:10px" id="fc-he">לאכול</div>
+      <div style="font-size:12px;color:rgba(255,255,255,.7);text-align:center;font-style:italic;line-height:1.5" id="fc-ex">I eat breakfast every morning.</div>
+    </div>
+  </div>
+</div>
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+  <button onclick="prevCard()" style="width:44px;height:44px;border-radius:12px;background:var(--sf);border:none;color:var(--p);font-size:18px;box-shadow:0 1px 3px var(--sh);flex-shrink:0">◀</button>
+  <div class="prog" style="flex:1;margin:0"><div class="pf" id="fc-p2" style="width:2%"></div></div>
+  <button onclick="nextCard()" style="width:44px;height:44px;border-radius:12px;background:var(--sf);border:none;color:var(--p);font-size:18px;box-shadow:0 1px 3px var(--sh);flex-shrink:0">▶</button>
+</div>
+<button id="fc-lb" class="btn" onclick="toggleLearned()">סמן כנלמד</button>
+<div class="card" style="margin-top:10px"><div style="font-size:10px;color:var(--tx3);margin-bottom:5px;font-weight:700">דוגמה:</div><div style="font-size:13px;color:var(--tx2);font-style:italic;line-height:1.5" id="fc-ex2"></div></div>
+</div>
+
+<!-- QUIZ -->
+<div id="s-quiz" class="scr">
+<div class="hdr"><div class="hrow">
+  <span style="font-weight:700;font-size:15px">חידון 🎯</span>
+  <div style="display:flex;align-items:center;gap:10px">
+    <span style="font-size:11px;color:var(--tx3)" id="q-c">1/10</span>
+    <div style="position:relative;width:38px;height:38px">
+      <svg width="38" height="38" style="transform:rotate(-90deg)">
+        <circle cx="19" cy="19" r="15" fill="none" stroke="var(--sf2)" stroke-width="3.5"/>
+        <circle id="q-tc" cx="19" cy="19" r="15" fill="none" stroke="var(--gn)" stroke-width="3.5" stroke-dasharray="94.25" stroke-dashoffset="0" style="transition:stroke-dashoffset 1s linear,stroke .3s"/>
+      </svg>
+      <div id="q-tt" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:12px;font-weight:800;color:var(--gn)">10</div>
+    </div>
+  </div>
+</div></div>
+<div class="prog"><div class="pf" id="q-p" style="width:0%"></div></div>
+<div style="text-align:center;margin-bottom:8px"><span style="background:var(--sf2);border-radius:20px;padding:3px 12px;font-size:11px;color:var(--tx2)" id="q-lv">🟢 בסיסי</span></div>
+<div style="font-size:12px;color:var(--tx3);text-align:center;margin-bottom:6px;font-weight:500">מה התרגום של המילה?</div>
+<div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:6px">
+  <div style="font-size:36px;font-weight:800;color:var(--tx)" id="q-w">eat</div>
+  <button class="spk" id="q-spk" onclick="speakQ()">🔈</button>
+</div>
+<div style="font-size:11px;color:var(--tx3);text-align:center;margin-bottom:18px;font-style:italic" id="q-ex"></div>
+<div id="q-opts"></div>
+<div id="q-enc" style="display:none;background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.3);border-radius:12px;padding:10px 16px;text-align:center;margin-top:8px;color:#F97316;font-weight:700;font-size:14px"></div>
+<div id="q-to" style="display:none;text-align:center;color:var(--rd);font-size:13px;font-weight:700;margin-top:6px"></div>
+</div>
+<div id="s-quiz-done" class="scr sc">
+  <div style="font-size:72px;margin-bottom:12px" id="qd-t">🏆</div>
+  <div style="font-size:54px;font-weight:900;letter-spacing:-1px;margin-bottom:8px;color:var(--tx)" id="qd-s">0/10</div>
+  <div style="font-size:16px;color:var(--tx3);margin-bottom:18px" id="qd-m">כל הכבוד!</div>
+  <div style="background:rgba(52,199,89,.1);border:1.5px solid var(--gn);border-radius:14px;padding:12px 20px;margin-bottom:24px;display:inline-flex;align-items:center;gap:10px">
+    <span>🔥</span><div style="text-align:right"><div style="font-weight:800;font-size:16px;color:var(--tx)" id="qd-sk">0 ימים!</div><div style="font-size:11px;color:var(--gn)" id="qd-r">🪙 +20</div></div>
+  </div>
+  <button class="btn" onclick="startQuiz()">שחק שוב</button>
+  <button class="btng" onclick="goTo('home')">חזור לבית</button>
+</div>
+
+<!-- REVERSE -->
+<div id="s-reverse" class="scr">
+<div class="hdr"><div class="hrow"><span style="font-weight:700;font-size:15px">חידון הפוך 🔄</span><span style="font-size:12px;color:var(--tx3)" id="r-c">1/10</span></div></div>
+<div class="prog"><div class="pf" id="r-p" style="width:0%"></div></div>
+<div style="font-size:12px;color:var(--tx3);text-align:center;margin-bottom:8px;font-weight:500">איזו מילה באנגלית מתאימה?</div>
+<div style="font-size:40px;font-weight:800;text-align:center;margin-bottom:6px;direction:rtl;color:var(--tx)" id="r-w"></div>
+<div style="font-size:11px;color:var(--tx3);text-align:center;margin-bottom:20px;font-style:italic" id="r-ex"></div>
+<div id="r-opts"></div>
+<div id="r-enc" style="display:none;background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.3);border-radius:12px;padding:10px 16px;text-align:center;margin-top:8px;color:#F97316;font-weight:700;font-size:14px"></div>
+</div>
+<div id="s-reverse-done" class="scr sc">
+  <div style="font-size:72px;margin-bottom:12px" id="rd-t">🏆</div>
+  <div style="font-size:54px;font-weight:900;letter-spacing:-1px;margin-bottom:8px;color:var(--tx)" id="rd-s">0/10</div>
+  <button class="btn" onclick="startReverse()">שחק שוב</button>
+  <button class="btng" onclick="goTo('home')">חזור לבית</button>
+</div>
+
+<!-- FILL -->
+<div id="s-fill" class="scr">
+<div class="hdr"><div class="hrow"><span style="font-weight:700;font-size:15px">משפטים ✍️</span><span style="font-size:12px;color:var(--tx3)" id="f-c">1/8</span></div></div>
+<div class="prog"><div class="pf" id="f-p" style="width:0%"></div></div>
+<div class="card" style="margin-bottom:18px">
+  <div style="font-size:10px;color:var(--tx3);margin-bottom:10px;font-weight:700">השלם/י את המשפט:</div>
+  <div style="font-size:19px;font-weight:700;line-height:1.8;text-align:center;direction:ltr;color:var(--tx)" id="f-s"></div>
+  <div style="font-size:12px;color:var(--tx3);margin-top:10px;direction:rtl;font-style:italic" id="f-h"></div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px" id="f-opts"></div>
+<div id="f-enc" style="display:none;background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.3);border-radius:12px;padding:10px 16px;text-align:center;margin-top:10px;color:#F97316;font-weight:700;font-size:14px"></div>
+</div>
+<div id="s-fill-done" class="scr sc">
+  <div style="font-size:72px;margin-bottom:12px" id="fd-t">🌟</div>
+  <div style="font-size:54px;font-weight:900;letter-spacing:-1px;margin-bottom:8px;color:var(--tx)" id="fd-s">0/8</div>
+  <button class="btn" onclick="startFill()">שחק שוב</button>
+  <button class="btng" onclick="goTo('home')">חזור לבית</button>
+</div>
+
+<!-- MATCH -->
+<div id="s-match" class="scr">
+<div class="hdr"><div class="hrow"><span style="font-weight:700;font-size:15px">התאמה 🔗</span><div style="display:flex;gap:12px;align-items:center"><span style="font-size:13px;font-weight:700;color:var(--tx)" id="m-t">⏱ 0:00</span><span style="font-size:12px;color:var(--tx3)" id="m-p">0/6</span></div></div></div>
+<div style="font-size:12px;color:var(--tx3);text-align:center;margin-bottom:16px">חבר כל מילה באנגלית לתרגום שלה</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px" id="m-g"></div>
+<div style="margin-top:16px;text-align:center"><button onclick="startMatch()" style="background:var(--sf2);border:none;border-radius:12px;padding:10px 20px;font-size:13px;color:var(--tx2);font-weight:600">ערבב 🔀</button></div>
+</div>
+<div id="s-match-done" class="scr sc">
+  <div style="font-size:72px;margin-bottom:12px">🎉</div>
+  <div style="font-size:28px;font-weight:800;margin-bottom:6px;color:var(--tx)">כל הכבוד!</div>
+  <div style="font-size:40px;font-weight:800;margin-bottom:28px;color:var(--tx)" id="md-t">⏱ 0:00</div>
+  <button class="btn" onclick="startMatch()">שחק שוב</button>
+  <button class="btng" onclick="goTo('home')">חזור לבית</button>
+</div>
+
+<!-- DICTIONARY -->
+<div id="s-dictionary" class="scr">
+<div class="hdr"><div class="hrow"><button class="btnb" onclick="goTo('home')">← חזור</button><span style="font-weight:700;font-size:15px">מילון 📖</span><span style="font-size:12px;color:var(--tx3)" id="d-c">50 מילים</span></div></div>
+<input type="search" id="d-s" placeholder="חפש מילה..." oninput="renderDict()">
+<div class="sr" id="d-tps"></div>
+<div id="d-l"></div>
+</div>
+
+<!-- SETTINGS -->
+<div id="s-settings" class="scr">
+<div class="hdr"><div class="hrow"><div style="width:60px"></div><span style="font-weight:700;font-size:17px">⚙️ הגדרות</span><div style="width:60px"></div></div></div>
+<div class="sec">מגדר</div>
+<div class="cflat">
+  <div class="row">
+    <div class="ib" style="background:#EDE9FE" id="st-gi">👦</div>
+    <div style="flex:1"><div style="font-weight:700;font-size:15px">מגדר</div><div style="font-size:12px;color:var(--tx3)" id="st-gl">זכר</div></div>
+    <div style="display:flex;gap:8px">
+      <button id="st-bm" onclick="setGender('male')" style="padding:7px 14px;border-radius:10px;border:1.5px solid var(--bd);background:var(--sf2);font-size:13px;font-weight:600;color:var(--tx)">👦 זכר</button>
+      <button id="st-bf" onclick="setGender('female')" style="padding:7px 14px;border-radius:10px;border:1.5px solid var(--bd);background:var(--sf2);font-size:13px;font-weight:600;color:var(--tx)">👧 נקבה</button>
+    </div>
+  </div>
+</div>
+<div class="sec">מנוי</div>
+<div class="cflat">
+  <div class="row">
+    <div class="ib" style="background:var(--pl)">👑</div>
+    <div style="flex:1"><div style="font-weight:700;font-size:15px" id="st-pt">תוכנית חינמית</div><div style="font-size:12px;color:var(--tx3)" id="st-ps">50 מילים</div></div>
+    <button id="st-ub" class="btns" onclick="openPaywall()">שדרג</button>
+  </div>
+</div>
+<div class="sec">סטטיסטיקות</div>
+<div class="cflat">
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;text-align:center">
+    <div style="padding:16px;border-left:1px solid var(--bd)"><div style="font-size:24px;font-weight:800;color:var(--tx)" id="st-s1">0</div><div style="font-size:11px;color:var(--tx3);margin-top:3px">נלמדו</div></div>
+    <div style="padding:16px;border-left:1px solid var(--bd)"><div style="font-size:24px;font-weight:800;color:var(--tx)" id="st-s2">0</div><div style="font-size:11px;color:var(--tx3);margin-top:3px">רצף</div></div>
+    <div style="padding:16px"><div style="font-size:24px;font-weight:800;color:var(--tx)" id="st-s3">1</div><div style="font-size:11px;color:var(--tx3);margin-top:3px">רמה</div></div>
+  </div>
+</div>
+<div class="sec">כללי</div>
+<div class="cflat">
+  <div class="row">
+    <div class="ib" style="background:#D1FAE5">🔊</div>
+    <div style="flex:1"><div style="font-weight:700;font-size:15px">הגייה</div><div style="font-size:12px;color:var(--tx3)">הגיית מילים באנגלית</div></div>
+    <div class="tgl" onclick="toggleSound()"><div class="ttr on" id="tgl-s"><span></span></div></div>
+  </div>
+  <div class="row">
+    <div class="ib" style="background:#FEF3C7">🌙</div>
+    <div style="flex:1"><div style="font-weight:700;font-size:15px">מצב לילה</div><div style="font-size:12px;color:var(--tx3)">לפי הגדרות המכשיר</div></div>
+    <span style="font-size:12px;color:var(--tx3);background:var(--sf2);padding:4px 10px;border-radius:10px">אוטומטי</span>
+  </div>
+</div>
+<div class="sec">מתקדם</div>
+<div class="cflat">
+  <button onclick="resetProgress()" style="width:100%;padding:16px;background:none;border:none;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--bd)">
+    <div class="ib" style="background:#FEE2E2">🔄</div><div style="flex:1;text-align:right"><div style="font-weight:700;font-size:15px;color:var(--rd)">איפוס התקדמות</div><div style="font-size:12px;color:var(--tx3)">מחק XP, מטבעות ורצף</div></div>
+  </button>
+  <button onclick="resetLearned()" style="width:100%;padding:16px;background:none;border:none;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--bd)">
+    <div class="ib" style="background:#FEE2E2">📚</div><div style="flex:1;text-align:right"><div style="font-weight:700;font-size:15px;color:var(--rd)">איפוס מילים שנלמדו</div><div style="font-size:12px;color:var(--tx3)">התחל מחדש</div></div>
+  </button>
+  <button onclick="resetPremium()" style="width:100%;padding:16px;background:none;border:none;display:flex;align-items:center;gap:14px">
+    <div class="ib" style="background:#FEE2E2">👑</div><div style="flex:1;text-align:right"><div style="font-weight:700;font-size:15px;color:var(--rd)">איפוס מנוי</div><div style="font-size:12px;color:var(--tx3)">חזור לחינמי</div></div>
+  </button>
+</div>
+<div class="sec">אודות</div>
+<div class="cflat">
+  <div class="row"><span style="font-weight:600;font-size:14px">גרסה</span><span style="color:var(--tx3);font-size:14px">1.0.0</span></div>
+  <div class="row"><span style="font-weight:600;font-size:14px">מילים</span><span style="color:var(--tx3);font-size:14px">500+</span></div>
+  <div class="row"><span style="font-weight:600;font-size:14px">נושאים</span><span style="color:var(--tx3);font-size:14px">21</span></div>
+</div>
+<div style="text-align:center;padding:24px 0 8px;color:var(--tx3);font-size:12px">בגרותי © 2025 • נבנה עם ❤️</div>
+</div>
+
+<!-- PAYWALL -->
+<div id="paywall" class="pw" onclick="closePaywall()">
+<div class="pws" onclick="event.stopPropagation()">
+  <div style="text-align:center;margin-bottom:18px">
+    <div style="font-size:48px;margin-bottom:8px">👑</div>
+    <div style="font-size:22px;font-weight:800;margin-bottom:6px;color:var(--tx)">שדרג לפרימיום</div>
+    <div style="font-size:14px;color:var(--tx3);line-height:1.6">גישה לכל 500 המילים וכל המשחקים</div>
+  </div>
+  <div style="margin-bottom:4px">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;direction:rtl"><span>✅</span><span style="font-size:15px;font-weight:600;color:var(--tx)">500 מילים ב-21 נושאים</span></div>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;direction:rtl"><span>✅</span><span style="font-size:15px;font-weight:600;color:var(--tx)">כל סוגי התרגולים</span></div>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;direction:rtl"><span>✅</span><span style="font-size:15px;font-weight:600;color:var(--tx)">מילון מלא עם הגייה 🔊</span></div>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;direction:rtl"><span>✅</span><span style="font-size:15px;font-weight:600;color:var(--tx)">ללא פרסומות</span></div>
+  </div>
+  <div style="background:var(--sf2);border-radius:14px;padding:14px;text-align:center;margin:14px 0">
+    <div style="font-size:36px;font-weight:900;color:var(--p);letter-spacing:-1px">₪19.90</div>
+    <div style="font-size:12px;color:var(--tx3)">לחודש • בטל בכל עת</div>
+  </div>
+  <button class="btn" onclick="upgradePremium()">🚀 התחל ניסיון חינם של 7 ימים</button>
+  <button class="btng" onclick="closePaywall()">המשך עם 50 מילים בחינם</button>
+  <div style="font-size:10px;color:var(--tx4);text-align:center;margin-top:6px">לאחר 7 ימים יחויב ₪19.90/חודש. ניתן לבטל בכל עת.</div>
+</div>
+</div>
+
+<!-- TOAST -->
+<div id="toast" class="toast"><span id="toast-tx"></span></div>
+
+<!-- NAV -->
+<nav id="nav" class="nav" style="display:none">
+  <button class="nb on" id="nb-home" onclick="goTo('home')"><i>🏠</i><span>בית</span></button>
+  <button class="nb" id="nb-flashcard" onclick="goTo('flashcard')"><i>🃏</i><span>כרטיסיות</span></button>
+  <button class="nb" id="nb-quiz" onclick="startQuiz()"><i>🎯</i><span>חידון</span></button>
+  <button class="nb" id="nb-reverse" onclick="goTo('reverse')"><i>🔄</i><span>הפוך</span></button>
+  <button class="nb" id="nb-settings" onclick="goTo('settings')"><i>⚙️</i><span>הגדרות</span></button>
+</nav>
+
+<script>
+// ── DATA ──
+const V=[
+{id:101,en:"eat",he:"לאכול",t:"Verb",ex:"I eat breakfast every morning.",l:1,tp:"כללי"},
+{id:102,en:"drink",he:"לשתות",t:"Verb",ex:"I drink water every day.",l:1,tp:"כללי"},
+{id:103,en:"sleep",he:"לישון",t:"Verb",ex:"I sleep 8 hours a night.",l:1,tp:"כללי"},
+{id:104,en:"run",he:"לרוץ",t:"Verb",ex:"I run in the park.",l:1,tp:"כללי"},
+{id:105,en:"walk",he:"ללכת",t:"Verb",ex:"I walk to school.",l:1,tp:"כללי"},
+{id:106,en:"happy",he:"שמח",t:"Adj",ex:"She is very happy today.",l:1,tp:"רגשות"},
+{id:107,en:"sad",he:"עצוב",t:"Adj",ex:"He feels sad today.",l:1,tp:"רגשות"},
+{id:108,en:"big",he:"גדול",t:"Adj",ex:"That is a big house.",l:1,tp:"כללי"},
+{id:109,en:"small",he:"קטן",t:"Adj",ex:"This is a small dog.",l:1,tp:"כללי"},
+{id:110,en:"house",he:"בית",t:"Noun",ex:"This is my house.",l:1,tp:"בית"},
+{id:111,en:"dog",he:"כלב",t:"Noun",ex:"My dog is friendly.",l:1,tp:"כללי"},
+{id:112,en:"friend",he:"חבר",t:"Noun",ex:"She is my best friend.",l:1,tp:"כללי"},
+{id:113,en:"food",he:"אוכל",t:"Noun",ex:"The food is delicious.",l:1,tp:"אוכל"},
+{id:114,en:"water",he:"מים",t:"Noun",ex:"I drink a lot of water.",l:1,tp:"אוכל"},
+{id:115,en:"school",he:"בית ספר",t:"Noun",ex:"I go to school every day.",l:1,tp:"לימודים"},
+{id:116,en:"money",he:"כסף",t:"Noun",ex:"I don't have money.",l:1,tp:"כסף"},
+{id:117,en:"time",he:"זמן",t:"Noun",ex:"I don't have time.",l:1,tp:"כללי"},
+{id:118,en:"talk",he:"לדבר",t:"Verb",ex:"We talk every day.",l:1,tp:"שפה"},
+{id:119,en:"work",he:"עבודה",t:"Noun",ex:"I work hard every day.",l:1,tp:"עבודה"},
+{id:120,en:"cat",he:"חתול",t:"Noun",ex:"The cat is sleeping.",l:1,tp:"כללי"},
+{id:201,en:"beautiful",he:"יפה",t:"Adj",ex:"What a beautiful day!",l:2,tp:"כללי"},
+{id:202,en:"important",he:"חשוב",t:"Adj",ex:"This is very important.",l:2,tp:"כללי"},
+{id:203,en:"difficult",he:"קשה",t:"Adj",ex:"Math is difficult for me.",l:2,tp:"לימודים"},
+{id:204,en:"understand",he:"להבין",t:"Verb",ex:"Do you understand me?",l:2,tp:"שפה"},
+{id:205,en:"remember",he:"לזכור",t:"Verb",ex:"I remember your name.",l:2,tp:"כללי"},
+{id:206,en:"forget",he:"לשכוח",t:"Verb",ex:"Don't forget your keys.",l:2,tp:"כללי"},
+{id:207,en:"decide",he:"להחליט",t:"Verb",ex:"I can't decide what to eat.",l:2,tp:"כללי"},
+{id:208,en:"problem",he:"בעיה",t:"Noun",ex:"We have a big problem.",l:2,tp:"כללי"},
+{id:209,en:"answer",he:"תשובה",t:"Noun",ex:"What is your answer?",l:2,tp:"לימודים"},
+{id:210,en:"question",he:"שאלה",t:"Noun",ex:"I have a question.",l:2,tp:"לימודים"},
+{id:211,en:"always",he:"תמיד",t:"Adv",ex:"She is always on time.",l:2,tp:"כללי"},
+{id:212,en:"never",he:"אף פעם לא",t:"Adv",ex:"I never lie.",l:2,tp:"כללי"},
+{id:213,en:"sometimes",he:"לפעמים",t:"Adv",ex:"I sometimes go running.",l:2,tp:"כללי"},
+{id:214,en:"maybe",he:"אולי",t:"Adv",ex:"Maybe we can meet tomorrow.",l:2,tp:"כללי"},
+{id:215,en:"because",he:"כי",t:"Conj",ex:"I'm tired because I didn't sleep.",l:2,tp:"שפה"},
+{id:216,en:"although",he:"למרות ש",t:"Conj",ex:"Although it rained, we went out.",l:2,tp:"שפה"},
+{id:217,en:"together",he:"ביחד",t:"Adv",ex:"Let's do it together.",l:2,tp:"כללי"},
+{id:218,en:"different",he:"שונה",t:"Adj",ex:"We are all different.",l:2,tp:"כללי"},
+{id:219,en:"already",he:"כבר",t:"Adv",ex:"I already finished my homework.",l:2,tp:"כללי"},
+{id:220,en:"feeling",he:"תחושה",t:"Noun",ex:"I have a strange feeling.",l:2,tp:"רגשות"},
+{id:1,en:"acquire",he:"לרכוש",t:"Verb",ex:"You need to acquire new skills.",l:3,tp:"עבודה"},
+{id:2,en:"acknowledge",he:"להכיר",t:"Verb",ex:"She acknowledged her mistake.",l:3,tp:"שפה"},
+{id:3,en:"affect",he:"להשפיע על",t:"Verb",ex:"Stress affects your health.",l:3,tp:"בריאות"},
+{id:4,en:"achieve",he:"להשיג",t:"Verb",ex:"Work hard to achieve your goals.",l:3,tp:"ערכים"},
+{id:5,en:"benefit",he:"יתרון",t:"Noun",ex:"Exercise has many benefits.",l:3,tp:"בריאות"},
+{id:6,en:"challenge",he:"אתגר",t:"Noun",ex:"Learning English is a challenge.",l:3,tp:"ערכים"},
+{id:7,en:"contribute",he:"לתרום",t:"Verb",ex:"Donate to contribute to charity.",l:3,tp:"ערכים"},
+{id:8,en:"consequence",he:"תוצאה",t:"Noun",ex:"Think about the consequences.",l:3,tp:"כללי"},
+{id:9,en:"demonstrate",he:"להדגים",t:"Verb",ex:"She demonstrated the technique.",l:3,tp:"לימודים"},
+{id:10,en:"encourage",he:"לעודד",t:"Verb",ex:"Teachers encourage students.",l:3,tp:"לימודים"},
+{id:11,en:"establish",he:"להקים",t:"Verb",ex:"They established a new company.",l:3,tp:"עבודה"},
+{id:12,en:"evaluate",he:"להעריך",t:"Verb",ex:"We need to evaluate the results.",l:3,tp:"עבודה"},
+{id:13,en:"generate",he:"לייצר",t:"Verb",ex:"Solar panels generate energy.",l:3,tp:"מדע"},
+{id:14,en:"impact",he:"השפעה",t:"Noun",ex:"Technology has a huge impact.",l:3,tp:"טכנולוגיה"},
+{id:15,en:"significant",he:"משמעותי",t:"Adj",ex:"This is a significant discovery.",l:3,tp:"מדע"},
+{id:16,en:"sufficient",he:"מספיק",t:"Adj",ex:"Is this sufficient for you?",l:3,tp:"כללי"},
+{id:17,en:"furthermore",he:"יתר על כן",t:"Adv",ex:"Furthermore, we need more time.",l:3,tp:"שפה"},
+{id:18,en:"nevertheless",he:"בכל זאת",t:"Adv",ex:"It was hard; nevertheless, she tried.",l:3,tp:"שפה"},
+{id:19,en:"convince",he:"לשכנע",t:"Verb",ex:"He convinced me to come.",l:3,tp:"שפה"},
+{id:20,en:"promote",he:"לקדם",t:"Verb",ex:"She was promoted at work.",l:3,tp:"עבודה"},
+{id:301,en:"breakfast",he:"ארוחת בוקר",t:"Noun",ex:"I eat breakfast at 7am.",l:1,tp:"אוכל"},
+{id:302,en:"lunch",he:"ארוחת צהריים",t:"Noun",ex:"We have lunch together.",l:1,tp:"אוכל"},
+{id:303,en:"dinner",he:"ארוחת ערב",t:"Noun",ex:"Dinner is ready!",l:1,tp:"אוכל"},
+{id:304,en:"hungry",he:"רעב",t:"Adj",ex:"I am very hungry.",l:1,tp:"אוכל"},
+{id:305,en:"delicious",he:"טעים",t:"Adj",ex:"This pizza is delicious!",l:1,tp:"אוכל"},
+{id:306,en:"cook",he:"לבשל",t:"Verb",ex:"I cook dinner every night.",l:1,tp:"אוכל"},
+{id:307,en:"recipe",he:"מתכון",t:"Noun",ex:"Can you share your recipe?",l:2,tp:"אוכל"},
+{id:308,en:"vegetable",he:"ירק",t:"Noun",ex:"Eat more vegetables!",l:1,tp:"אוכל"},
+{id:309,en:"restaurant",he:"מסעדה",t:"Noun",ex:"Let's go to a restaurant.",l:1,tp:"אוכל"},
+{id:310,en:"spicy",he:"חריף",t:"Adj",ex:"The food is too spicy for me.",l:1,tp:"אוכל"},
+{id:401,en:"job",he:"משרה",t:"Noun",ex:"I love my job.",l:1,tp:"עבודה"},
+{id:402,en:"meeting",he:"פגישה",t:"Noun",ex:"I have a meeting at 9am.",l:1,tp:"עבודה"},
+{id:403,en:"salary",he:"משכורת",t:"Noun",ex:"My salary is good.",l:1,tp:"עבודה"},
+{id:404,en:"deadline",he:"מועד אחרון",t:"Noun",ex:"The deadline is Friday.",l:2,tp:"עבודה"},
+{id:405,en:"interview",he:"ראיון",t:"Noun",ex:"I have a job interview tomorrow.",l:2,tp:"עבודה"},
+{id:406,en:"colleague",he:"עמית לעבודה",t:"Noun",ex:"My colleague is helpful.",l:2,tp:"עבודה"},
+{id:407,en:"experience",he:"ניסיון",t:"Noun",ex:"I have 5 years of experience.",l:2,tp:"עבודה"},
+{id:408,en:"productive",he:"פרודוקטיבי",t:"Adj",ex:"I'm productive in the morning.",l:2,tp:"עבודה"},
+{id:409,en:"teamwork",he:"עבודת צוות",t:"Noun",ex:"Good teamwork is essential.",l:2,tp:"עבודה"},
+{id:410,en:"project",he:"פרויקט",t:"Noun",ex:"We finished the project.",l:1,tp:"עבודה"},
+{id:501,en:"travel",he:"לטייל",t:"Verb",ex:"I love to travel.",l:1,tp:"טיולים"},
+{id:502,en:"flight",he:"טיסה",t:"Noun",ex:"My flight is at 6am.",l:1,tp:"טיולים"},
+{id:503,en:"passport",he:"דרכון",t:"Noun",ex:"Don't forget your passport!",l:1,tp:"טיולים"},
+{id:504,en:"hotel",he:"מלון",t:"Noun",ex:"The hotel is very nice.",l:1,tp:"טיולים"},
+{id:505,en:"luggage",he:"מזוודות",t:"Noun",ex:"My luggage is too heavy.",l:1,tp:"טיולים"},
+{id:506,en:"tourist",he:"תייר",t:"Noun",ex:"The city is full of tourists.",l:1,tp:"טיולים"},
+{id:507,en:"destination",he:"יעד",t:"Noun",ex:"What is your destination?",l:2,tp:"טיולים"},
+{id:508,en:"adventure",he:"הרפתקה",t:"Noun",ex:"It was a real adventure!",l:1,tp:"טיולים"},
+{id:509,en:"souvenir",he:"מזכרת",t:"Noun",ex:"I bought souvenirs for my family.",l:2,tp:"טיולים"},
+{id:510,en:"local",he:"מקומי",t:"Adj",ex:"Try the local food!",l:1,tp:"טיולים"},
+{id:601,en:"excited",he:"נרגש",t:"Adj",ex:"I am so excited!",l:1,tp:"רגשות"},
+{id:602,en:"nervous",he:"לחוץ",t:"Adj",ex:"I am nervous about the exam.",l:1,tp:"רגשות"},
+{id:603,en:"proud",he:"גאה",t:"Adj",ex:"I am proud of you!",l:1,tp:"רגשות"},
+{id:604,en:"scared",he:"מפוחד",t:"Adj",ex:"I am scared of spiders.",l:1,tp:"רגשות"},
+{id:605,en:"lonely",he:"בודד",t:"Adj",ex:"He feels lonely sometimes.",l:1,tp:"רגשות"},
+{id:606,en:"angry",he:"כועס",t:"Adj",ex:"She was very angry.",l:1,tp:"רגשות"},
+{id:607,en:"grateful",he:"אסיר תודה",t:"Adj",ex:"I am grateful for your help.",l:2,tp:"רגשות"},
+{id:608,en:"confident",he:"בטוח בעצמו",t:"Adj",ex:"She is very confident.",l:2,tp:"רגשות"},
+{id:609,en:"frustrated",he:"מתוסכל",t:"Adj",ex:"I am frustrated with this problem.",l:2,tp:"רגשות"},
+{id:610,en:"overwhelmed",he:"מוצף",t:"Adj",ex:"I feel overwhelmed with work.",l:2,tp:"רגשות"},
+{id:701,en:"doctor",he:"רופא",t:"Noun",ex:"I need to see a doctor.",l:1,tp:"בריאות"},
+{id:702,en:"hospital",he:"בית חולים",t:"Noun",ex:"He is in the hospital.",l:1,tp:"בריאות"},
+{id:703,en:"medicine",he:"תרופה",t:"Noun",ex:"Take your medicine twice a day.",l:1,tp:"בריאות"},
+{id:704,en:"healthy",he:"בריא",t:"Adj",ex:"Eat healthy food every day.",l:1,tp:"בריאות"},
+{id:705,en:"sick",he:"חולה",t:"Adj",ex:"I feel sick today.",l:1,tp:"בריאות"},
+{id:706,en:"exercise",he:"להתאמן",t:"Verb",ex:"I exercise three times a week.",l:1,tp:"בריאות"},
+{id:707,en:"stress",he:"לחץ",t:"Noun",ex:"Work causes a lot of stress.",l:2,tp:"בריאות"},
+{id:708,en:"symptom",he:"תסמין",t:"Noun",ex:"Fever is a common symptom.",l:2,tp:"בריאות"},
+{id:709,en:"recover",he:"להחלים",t:"Verb",ex:"He recovered from the illness.",l:2,tp:"בריאות"},
+{id:710,en:"allergy",he:"אלרגיה",t:"Noun",ex:"I have a nut allergy.",l:2,tp:"בריאות"},
+{id:801,en:"computer",he:"מחשב",t:"Noun",ex:"I use a computer every day.",l:1,tp:"טכנולוגיה"},
+{id:802,en:"internet",he:"אינטרנט",t:"Noun",ex:"The internet is very fast here.",l:1,tp:"טכנולוגיה"},
+{id:803,en:"app",he:"אפליקציה",t:"Noun",ex:"I use this app every day.",l:1,tp:"טכנולוגיה"},
+{id:804,en:"download",he:"להוריד",t:"Verb",ex:"Download the app for free.",l:1,tp:"טכנולוגיה"},
+{id:805,en:"password",he:"סיסמה",t:"Noun",ex:"Don't share your password.",l:1,tp:"טכנולוגיה"},
+{id:806,en:"software",he:"תוכנה",t:"Noun",ex:"Update your software regularly.",l:2,tp:"טכנולוגיה"},
+{id:807,en:"digital",he:"דיגיטלי",t:"Adj",ex:"We live in a digital world.",l:2,tp:"טכנולוגיה"},
+{id:808,en:"privacy",he:"פרטיות",t:"Noun",ex:"Protect your online privacy.",l:2,tp:"טכנולוגיה"},
+{id:809,en:"artificial intelligence",he:"בינה מלאכותית",t:"Noun",ex:"AI is changing the world.",l:3,tp:"טכנולוגיה"},
+{id:810,en:"notification",he:"התראה",t:"Noun",ex:"Turn off your notifications.",l:2,tp:"טכנולוגיה"},
+{id:901,en:"student",he:"תלמיד",t:"Noun",ex:"She is a great student.",l:1,tp:"לימודים"},
+{id:902,en:"teacher",he:"מורה",t:"Noun",ex:"My teacher is very kind.",l:1,tp:"לימודים"},
+{id:903,en:"exam",he:"מבחן",t:"Noun",ex:"I have an exam tomorrow.",l:1,tp:"לימודים"},
+{id:904,en:"grade",he:"ציון",t:"Noun",ex:"I got a good grade on the test.",l:1,tp:"לימודים"},
+{id:905,en:"study",he:"ללמוד",t:"Verb",ex:"I study every night.",l:1,tp:"לימודים"},
+{id:906,en:"knowledge",he:"ידע",t:"Noun",ex:"Knowledge is power.",l:2,tp:"לימודים"},
+{id:907,en:"research",he:"מחקר",t:"Noun",ex:"She is doing research on AI.",l:2,tp:"לימודים"},
+{id:908,en:"concentrate",he:"להתרכז",t:"Verb",ex:"I can't concentrate with noise.",l:2,tp:"לימודים"},
+{id:909,en:"memorize",he:"לשנן",t:"Verb",ex:"Memorize these words for the test.",l:2,tp:"לימודים"},
+{id:910,en:"university",he:"אוניברסיטה",t:"Noun",ex:"I want to go to university.",l:1,tp:"לימודים"},
+{id:1001,en:"tree",he:"עץ",t:"Noun",ex:"The tree is very tall.",l:1,tp:"טבע"},
+{id:1002,en:"ocean",he:"אוקיינוס",t:"Noun",ex:"The ocean is beautiful.",l:1,tp:"טבע"},
+{id:1003,en:"weather",he:"מזג אוויר",t:"Noun",ex:"The weather is nice today.",l:1,tp:"טבע"},
+{id:1004,en:"environment",he:"סביבה",t:"Noun",ex:"Protect the environment.",l:2,tp:"טבע"},
+{id:1005,en:"pollution",he:"זיהום",t:"Noun",ex:"Air pollution is a big problem.",l:2,tp:"טבע"},
+{id:1006,en:"climate",he:"אקלים",t:"Noun",ex:"Climate change affects us all.",l:2,tp:"טבע"},
+{id:1007,en:"recycle",he:"למחזר",t:"Verb",ex:"Please recycle your bottles.",l:2,tp:"טבע"},
+{id:1008,en:"forest",he:"יער",t:"Noun",ex:"We walked through the forest.",l:1,tp:"טבע"},
+{id:1009,en:"desert",he:"מדבר",t:"Noun",ex:"Israel has a large desert.",l:1,tp:"טבע"},
+{id:1010,en:"sustainable",he:"בר קיימא",t:"Adj",ex:"We need sustainable energy.",l:3,tp:"טבע"},
+{id:1101,en:"kitchen",he:"מטבח",t:"Noun",ex:"The kitchen is clean.",l:1,tp:"בית"},
+{id:1102,en:"bedroom",he:"חדר שינה",t:"Noun",ex:"My bedroom is very small.",l:1,tp:"בית"},
+{id:1103,en:"furniture",he:"רהיטים",t:"Noun",ex:"We bought new furniture.",l:1,tp:"בית"},
+{id:1104,en:"neighbor",he:"שכן",t:"Noun",ex:"My neighbor is very friendly.",l:1,tp:"בית"},
+{id:1105,en:"rent",he:"שכירות",t:"Noun",ex:"The rent is too expensive.",l:1,tp:"בית"},
+{id:1106,en:"clean",he:"לנקות",t:"Verb",ex:"I clean my room every week.",l:1,tp:"בית"},
+{id:1107,en:"comfortable",he:"נוח",t:"Adj",ex:"This sofa is very comfortable.",l:1,tp:"בית"},
+{id:1108,en:"renovation",he:"שיפוץ",t:"Noun",ex:"The house needs a renovation.",l:2,tp:"בית"},
+{id:1109,en:"electricity",he:"חשמל",t:"Noun",ex:"The electricity bill is high.",l:2,tp:"בית"},
+{id:1110,en:"mortgage",he:"משכנתא",t:"Noun",ex:"We took a mortgage for the house.",l:3,tp:"בית"},
+{id:1201,en:"team",he:"קבוצה",t:"Noun",ex:"Our team won the game.",l:1,tp:"ספורט"},
+{id:1202,en:"coach",he:"מאמן",t:"Noun",ex:"The coach is very strict.",l:1,tp:"ספורט"},
+{id:1203,en:"win",he:"לנצח",t:"Verb",ex:"We need to win this game.",l:1,tp:"ספורט"},
+{id:1204,en:"champion",he:"אלוף",t:"Noun",ex:"She is the world champion.",l:2,tp:"ספורט"},
+{id:1205,en:"tournament",he:"טורניר",t:"Noun",ex:"We won the tournament!",l:2,tp:"ספורט"},
+{id:1206,en:"athlete",he:"ספורטאי",t:"Noun",ex:"He is a professional athlete.",l:2,tp:"ספורט"},
+{id:1207,en:"training",he:"אימון",t:"Noun",ex:"Training starts at 6am.",l:1,tp:"ספורט"},
+{id:1208,en:"compete",he:"להתחרות",t:"Verb",ex:"I love to compete.",l:2,tp:"ספורט"},
+{id:1209,en:"fitness",he:"כושר",t:"Noun",ex:"Fitness is very important.",l:2,tp:"ספורט"},
+{id:1210,en:"strategy",he:"אסטרטגיה",t:"Noun",ex:"The coach has a great strategy.",l:3,tp:"ספורט"},
+{id:1301,en:"bank",he:"בנק",t:"Noun",ex:"I need to go to the bank.",l:1,tp:"כסף"},
+{id:1302,en:"savings",he:"חסכונות",t:"Noun",ex:"I have savings in the bank.",l:2,tp:"כסף"},
+{id:1303,en:"budget",he:"תקציב",t:"Noun",ex:"We have a tight budget.",l:2,tp:"כסף"},
+{id:1304,en:"invest",he:"להשקיע",t:"Verb",ex:"I want to invest in stocks.",l:2,tp:"כסף"},
+{id:1305,en:"expensive",he:"יקר",t:"Adj",ex:"This restaurant is too expensive.",l:1,tp:"כסף"},
+{id:1306,en:"cheap",he:"זול",t:"Adj",ex:"The shirt was very cheap.",l:1,tp:"כסף"},
+{id:1307,en:"discount",he:"הנחה",t:"Noun",ex:"I got a 20% discount.",l:1,tp:"כסף"},
+{id:1308,en:"income",he:"הכנסה",t:"Noun",ex:"My income increased this year.",l:2,tp:"כסף"},
+{id:1309,en:"insurance",he:"ביטוח",t:"Noun",ex:"Do you have health insurance?",l:2,tp:"כסף"},
+{id:1310,en:"economy",he:"כלכלה",t:"Noun",ex:"The economy is growing fast.",l:3,tp:"כסף"},
+{id:1401,en:"parent",he:"הורה",t:"Noun",ex:"My parents are very supportive.",l:1,tp:"משפחה"},
+{id:1402,en:"sibling",he:"אח/אחות",t:"Noun",ex:"I have two siblings.",l:2,tp:"משפחה"},
+{id:1403,en:"marriage",he:"נישואים",t:"Noun",ex:"They have a happy marriage.",l:2,tp:"משפחה"},
+{id:1404,en:"childhood",he:"ילדות",t:"Noun",ex:"I had a happy childhood.",l:2,tp:"משפחה"},
+{id:1405,en:"tradition",he:"מסורת",t:"Noun",ex:"This is a family tradition.",l:2,tp:"משפחה"},
+{id:1406,en:"generation",he:"דור",t:"Noun",ex:"Three generations live together.",l:3,tp:"משפחה"},
+{id:1407,en:"support",he:"תמיכה",t:"Noun",ex:"My family always supports me.",l:2,tp:"משפחה"},
+{id:1408,en:"bond",he:"קשר",t:"Noun",ex:"There is a strong bond between them.",l:2,tp:"משפחה"},
+{id:1409,en:"baby",he:"תינוק",t:"Noun",ex:"The baby is sleeping.",l:1,tp:"משפחה"},
+{id:1410,en:"elderly",he:"קשיש",t:"Adj",ex:"We should care for the elderly.",l:2,tp:"משפחה"},
+{id:1501,en:"movie",he:"סרט",t:"Noun",ex:"Let's watch a movie tonight.",l:1,tp:"בידור"},
+{id:1502,en:"concert",he:"קונצרט",t:"Noun",ex:"I went to a concert last night.",l:1,tp:"בידור"},
+{id:1503,en:"episode",he:"פרק",t:"Noun",ex:"I watched three episodes last night.",l:1,tp:"בידור"},
+{id:1504,en:"celebrity",he:"מפורסם",t:"Noun",ex:"She is a big celebrity.",l:2,tp:"בידור"},
+{id:1505,en:"popular",he:"פופולרי",t:"Adj",ex:"This song is very popular.",l:1,tp:"בידור"},
+{id:1506,en:"boring",he:"משעמם",t:"Adj",ex:"The movie was very boring.",l:1,tp:"בידור"},
+{id:1507,en:"exciting",he:"מרגש",t:"Adj",ex:"That was so exciting!",l:1,tp:"בידור"},
+{id:1508,en:"recommend",he:"להמליץ",t:"Verb",ex:"I recommend this book to everyone.",l:2,tp:"בידור"},
+{id:1509,en:"subscribe",he:"להירשם",t:"Verb",ex:"Subscribe to our channel!",l:2,tp:"בידור"},
+{id:1510,en:"stream",he:"לסטרים",t:"Verb",ex:"I stream music all day.",l:2,tp:"בידור"},
+{id:1601,en:"car",he:"מכונית",t:"Noun",ex:"I drive a car to work.",l:1,tp:"תחבורה"},
+{id:1602,en:"bus",he:"אוטובוס",t:"Noun",ex:"I take the bus every day.",l:1,tp:"תחבורה"},
+{id:1603,en:"traffic",he:"פקק",t:"Noun",ex:"The traffic is terrible today.",l:1,tp:"תחבורה"},
+{id:1604,en:"license",he:"רישיון",t:"Noun",ex:"I have a driver's license.",l:1,tp:"תחבורה"},
+{id:1605,en:"accident",he:"תאונה",t:"Noun",ex:"There was an accident on the road.",l:2,tp:"תחבורה"},
+{id:1606,en:"fuel",he:"דלק",t:"Noun",ex:"The car needs fuel.",l:2,tp:"תחבורה"},
+{id:1607,en:"rush hour",he:"שעת שיא",t:"Noun",ex:"Avoid driving during rush hour.",l:2,tp:"תחבורה"},
+{id:1608,en:"navigate",he:"לנווט",t:"Verb",ex:"I use GPS to navigate.",l:2,tp:"תחבורה"},
+{id:1609,en:"delay",he:"עיכוב",t:"Noun",ex:"The train had a 20 minute delay.",l:2,tp:"תחבורה"},
+{id:1610,en:"seatbelt",he:"חגורת בטיחות",t:"Noun",ex:"Always wear your seatbelt.",l:1,tp:"תחבורה"},
+{id:1701,en:"waiter",he:"מלצר",t:"Noun",ex:"The waiter was very friendly.",l:1,tp:"מסעדה"},
+{id:1702,en:"tip",he:"טיפ",t:"Noun",ex:"Don't forget to leave a tip.",l:1,tp:"מסעדה"},
+{id:1703,en:"vegetarian",he:"צמחוני",t:"Adj",ex:"Do you have vegetarian options?",l:2,tp:"מסעדה"},
+{id:1704,en:"dessert",he:"קינוח",t:"Noun",ex:"I always save room for dessert.",l:1,tp:"מסעדה"},
+{id:1705,en:"chef",he:"שף",t:"Noun",ex:"The chef is very talented.",l:1,tp:"מסעדה"},
+{id:1706,en:"fresh",he:"טרי",t:"Adj",ex:"The fish is very fresh here.",l:1,tp:"מסעדה"},
+{id:1707,en:"grilled",he:"צלוי",t:"Adj",ex:"I like grilled chicken.",l:1,tp:"מסעדה"},
+{id:1708,en:"cuisine",he:"מטבח",t:"Noun",ex:"I love Italian cuisine.",l:2,tp:"מסעדה"},
+{id:1709,en:"organic",he:"אורגני",t:"Adj",ex:"I prefer organic vegetables.",l:2,tp:"מסעדה"},
+{id:1710,en:"bill",he:"חשבון",t:"Noun",ex:"Can we have the bill please?",l:1,tp:"מסעדה"},
+{id:1801,en:"fashion",he:"אופנה",t:"Noun",ex:"She works in the fashion industry.",l:2,tp:"אופנה"},
+{id:1802,en:"style",he:"סגנון",t:"Noun",ex:"I love her style.",l:1,tp:"אופנה"},
+{id:1803,en:"brand",he:"מותג",t:"Noun",ex:"Which brand do you prefer?",l:2,tp:"אופנה"},
+{id:1804,en:"sale",he:"מבצע",t:"Noun",ex:"Everything is on sale today!",l:1,tp:"אופנה"},
+{id:1805,en:"casual",he:"יומיומי",t:"Adj",ex:"It is a casual dress code.",l:2,tp:"אופנה"},
+{id:1806,en:"formal",he:"רשמי",t:"Adj",ex:"Wear something formal tonight.",l:2,tp:"אופנה"},
+{id:1807,en:"bargain",he:"מציאה",t:"Noun",ex:"This coat was a real bargain!",l:2,tp:"אופנה"},
+{id:1808,en:"vintage",he:"וינטאג",t:"Adj",ex:"She loves vintage clothing.",l:2,tp:"אופנה"},
+{id:1809,en:"refund",he:"החזר כספי",t:"Noun",ex:"I want a refund for this shirt.",l:2,tp:"אופנה"},
+{id:1810,en:"wardrobe",he:"ארון בגדים",t:"Noun",ex:"I need to update my wardrobe.",l:2,tp:"אופנה"},
+{id:1901,en:"language",he:"שפה",t:"Noun",ex:"English is a global language.",l:1,tp:"שפה"},
+{id:1902,en:"translate",he:"לתרגם",t:"Verb",ex:"Can you translate this for me?",l:1,tp:"שפה"},
+{id:1903,en:"fluent",he:"שוטף",t:"Adj",ex:"She is fluent in three languages.",l:2,tp:"שפה"},
+{id:1904,en:"accent",he:"מבטא",t:"Noun",ex:"He has a strong French accent.",l:2,tp:"שפה"},
+{id:1905,en:"vocabulary",he:"אוצר מילים",t:"Noun",ex:"Build your English vocabulary.",l:2,tp:"שפה"},
+{id:1906,en:"grammar",he:"דקדוק",t:"Noun",ex:"Her grammar is perfect.",l:2,tp:"שפה"},
+{id:1907,en:"communicate",he:"לתקשר",t:"Verb",ex:"It is hard to communicate in a new language.",l:2,tp:"שפה"},
+{id:1908,en:"conversation",he:"שיחה",t:"Noun",ex:"We had a great conversation.",l:1,tp:"שפה"},
+{id:1909,en:"apologize",he:"להתנצל",t:"Verb",ex:"You should apologize.",l:2,tp:"שפה"},
+{id:1910,en:"clarify",he:"להבהיר",t:"Verb",ex:"Can you clarify what you mean?",l:3,tp:"שפה"},
+{id:2001,en:"experiment",he:"ניסוי",t:"Noun",ex:"The experiment was a success.",l:2,tp:"מדע"},
+{id:2002,en:"theory",he:"תיאוריה",t:"Noun",ex:"Einstein's theory changed science.",l:2,tp:"מדע"},
+{id:2003,en:"discovery",he:"גילוי",t:"Noun",ex:"This is a major discovery.",l:2,tp:"מדע"},
+{id:2004,en:"evidence",he:"ראיות",t:"Noun",ex:"There is strong evidence for this.",l:2,tp:"מדע"},
+{id:2005,en:"energy",he:"אנרגיה",t:"Noun",ex:"Solar energy is renewable.",l:1,tp:"מדע"},
+{id:2006,en:"biology",he:"ביולוגיה",t:"Noun",ex:"I study biology at school.",l:2,tp:"מדע"},
+{id:2007,en:"analyze",he:"לנתח",t:"Verb",ex:"Analyze the data carefully.",l:2,tp:"מדע"},
+{id:2008,en:"laboratory",he:"מעבדה",t:"Noun",ex:"She works in a laboratory.",l:2,tp:"מדע"},
+{id:2009,en:"evolution",he:"אבולוציה",t:"Noun",ex:"Evolution is a slow process.",l:3,tp:"מדע"},
+{id:2010,en:"observe",he:"לצפות",t:"Verb",ex:"Scientists observe nature carefully.",l:2,tp:"מדע"},
+{id:2101,en:"honest",he:"כנה",t:"Adj",ex:"Always be honest with people.",l:1,tp:"ערכים"},
+{id:2102,en:"loyal",he:"נאמן",t:"Adj",ex:"She is a loyal friend.",l:2,tp:"ערכים"},
+{id:2103,en:"brave",he:"אמיץ",t:"Adj",ex:"It was a brave decision.",l:1,tp:"ערכים"},
+{id:2104,en:"generous",he:"נדיב",t:"Adj",ex:"He is very generous with his time.",l:2,tp:"ערכים"},
+{id:2105,en:"patient",he:"סבלני",t:"Adj",ex:"Be patient. It takes time.",l:1,tp:"ערכים"},
+{id:2106,en:"creative",he:"יצירתי",t:"Adj",ex:"She is a very creative person.",l:1,tp:"ערכים"},
+{id:2107,en:"ambitious",he:"שאפתני",t:"Adj",ex:"He is ambitious and hardworking.",l:2,tp:"ערכים"},
+{id:2108,en:"courage",he:"אומץ",t:"Noun",ex:"It takes courage to speak up.",l:2,tp:"ערכים"},
+{id:2109,en:"inspire",he:"לעורר השראה",t:"Verb",ex:"She inspires everyone around her.",l:2,tp:"ערכים"},
+{id:2110,en:"growth",he:"צמיחה",t:"Noun",ex:"Focus on personal growth.",l:2,tp:"ערכים"},
+{id:2201,en:"democracy",he:"דמוקרטיה",t:"Noun",ex:"Democracy gives people a voice.",l:2,tp:"היסטוריה"},
+{id:2202,en:"government",he:"ממשלה",t:"Noun",ex:"The government passed a new law.",l:2,tp:"היסטוריה"},
+{id:2203,en:"election",he:"בחירות",t:"Noun",ex:"The election results were surprising.",l:2,tp:"היסטוריה"},
+{id:2204,en:"freedom",he:"חופש",t:"Noun",ex:"Freedom is a basic human right.",l:1,tp:"היסטוריה"},
+{id:2205,en:"revolution",he:"מהפכה",t:"Noun",ex:"The revolution changed the country.",l:3,tp:"היסטוריה"},
+{id:2206,en:"law",he:"חוק",t:"Noun",ex:"Everyone must follow the law.",l:1,tp:"היסטוריה"},
+{id:2207,en:"vote",he:"להצביע",t:"Verb",ex:"Vote for the candidate you believe in.",l:1,tp:"היסטוריה"},
+{id:2208,en:"justice",he:"צדק",t:"Noun",ex:"We must fight for justice.",l:2,tp:"היסטוריה"},
+{id:2209,en:"equality",he:"שוויון",t:"Noun",ex:"Everyone deserves equality.",l:2,tp:"היסטוריה"},
+{id:2210,en:"independence",he:"עצמאות",t:"Noun",ex:"Israel declared independence in 1948.",l:2,tp:"היסטוריה"},
+// נושא: ספורט נוסף
+{id:2301,en:"score",he:"ניקוד",t:"Noun",ex:"The score is 2 to 1.",l:1,tp:"ספורט"},
+{id:2302,en:"lose",he:"להפסיד",t:"Verb",ex:"It is okay to lose sometimes.",l:1,tp:"ספורט"},
+{id:2303,en:"referee",he:"שופט",t:"Noun",ex:"The referee made a mistake.",l:2,tp:"ספורט"},
+{id:2304,en:"stadium",he:"אצטדיון",t:"Noun",ex:"The stadium was full.",l:1,tp:"ספורט"},
+{id:2305,en:"medal",he:"מדליה",t:"Noun",ex:"She won a gold medal.",l:1,tp:"ספורט"},
+{id:2306,en:"penalty",he:"עונשין",t:"Noun",ex:"He got a penalty for the foul.",l:2,tp:"ספורט"},
+{id:2307,en:"retire",he:"לפרוש",t:"Verb",ex:"The player retired at 35.",l:2,tp:"ספורט"},
+{id:2308,en:"warm up",he:"חימום",t:"Verb",ex:"Always warm up before training.",l:1,tp:"ספורט"},
+{id:2309,en:"record",he:"שיא",t:"Noun",ex:"She broke the world record.",l:2,tp:"ספורט"},
+{id:2310,en:"opponent",he:"יריב",t:"Noun",ex:"The opponent was very strong.",l:2,tp:"ספורט"},
+// נושא: כסף נוסף
+{id:2401,en:"tax",he:"מס",t:"Noun",ex:"The tax rate is very high.",l:2,tp:"כסף"},
+{id:2402,en:"profit",he:"רווח",t:"Noun",ex:"The company made a big profit.",l:2,tp:"כסף"},
+{id:2403,en:"loan",he:"הלוואה",t:"Noun",ex:"I took a loan from the bank.",l:2,tp:"כסף"},
+{id:2404,en:"afford",he:"להרשות לעצמו",t:"Verb",ex:"I cannot afford a new car.",l:2,tp:"כסף"},
+{id:2405,en:"receipt",he:"קבלה",t:"Noun",ex:"Keep your receipt.",l:1,tp:"כסף"},
+{id:2406,en:"wealthy",he:"עשיר",t:"Adj",ex:"He comes from a wealthy family.",l:2,tp:"כסף"},
+{id:2407,en:"poverty",he:"עוני",t:"Noun",ex:"Poverty is a global problem.",l:3,tp:"כסף"},
+{id:2408,en:"withdraw",he:"למשוך כסף",t:"Verb",ex:"I need to withdraw some cash.",l:2,tp:"כסף"},
+{id:2409,en:"debt",he:"חוב",t:"Noun",ex:"I have a lot of debt.",l:2,tp:"כסף"},
+{id:2410,en:"credit card",he:"כרטיס אשראי",t:"Noun",ex:"I paid by credit card.",l:1,tp:"כסף"},
+// נושא: משפחה נוסף
+{id:2501,en:"grandparent",he:"סבא/סבתא",t:"Noun",ex:"My grandparents live nearby.",l:1,tp:"משפחה"},
+{id:2502,en:"cousin",he:"בן דוד",t:"Noun",ex:"I have many cousins.",l:1,tp:"משפחה"},
+{id:2503,en:"pregnant",he:"בהריון",t:"Adj",ex:"She is 6 months pregnant.",l:2,tp:"משפחה"},
+{id:2504,en:"raise",he:"לגדל",t:"Verb",ex:"It is hard to raise children.",l:2,tp:"משפחה"},
+{id:2505,en:"anniversary",he:"יום נישואים",t:"Noun",ex:"Happy anniversary!",l:2,tp:"משפחה"},
+{id:2506,en:"teenager",he:"מתבגר",t:"Noun",ex:"Being a teenager is not easy.",l:1,tp:"משפחה"},
+{id:2507,en:"argue",he:"להתווכח",t:"Verb",ex:"They argued for hours.",l:2,tp:"משפחה"},
+{id:2508,en:"inherit",he:"לרשת",t:"Verb",ex:"She inherited the house from her mother.",l:3,tp:"משפחה"},
+{id:2509,en:"divorce",he:"גירושים",t:"Noun",ex:"They went through a difficult divorce.",l:2,tp:"משפחה"},
+{id:2510,en:"affection",he:"חיבה",t:"Noun",ex:"Show affection to your loved ones.",l:3,tp:"משפחה"},
+// נושא: בידור נוסף
+{id:2601,en:"actor",he:"שחקן",t:"Noun",ex:"He is a famous actor.",l:1,tp:"בידור"},
+{id:2602,en:"director",he:"במאי",t:"Noun",ex:"The director won an Oscar.",l:2,tp:"בידור"},
+{id:2603,en:"comedy",he:"קומדיה",t:"Noun",ex:"I love watching comedy shows.",l:1,tp:"בידור"},
+{id:2604,en:"drama",he:"דרמה",t:"Noun",ex:"This series is a great drama.",l:1,tp:"בידור"},
+{id:2605,en:"audience",he:"קהל",t:"Noun",ex:"The audience loved the show.",l:2,tp:"בידור"},
+{id:2606,en:"award",he:"פרס",t:"Noun",ex:"She won the best actress award.",l:2,tp:"בידור"},
+{id:2607,en:"genre",he:"ז'אנר",t:"Noun",ex:"What genre of music do you like?",l:2,tp:"בידור"},
+{id:2608,en:"plot",he:"עלילה",t:"Noun",ex:"The plot was very surprising.",l:2,tp:"בידור"},
+{id:2609,en:"binge-watch",he:"לצפות בהמון פרקים",t:"Verb",ex:"I binge-watched the whole series.",l:2,tp:"בידור"},
+{id:2610,en:"lyrics",he:"מילות שיר",t:"Noun",ex:"I love the lyrics of this song.",l:2,tp:"בידור"},
+// נושא: תחבורה נוסף
+{id:2701,en:"parking",he:"חניה",t:"Noun",ex:"I cannot find parking here.",l:1,tp:"תחבורה"},
+{id:2702,en:"highway",he:"כביש מהיר",t:"Noun",ex:"Take the highway to save time.",l:1,tp:"תחבורה"},
+{id:2703,en:"pedestrian",he:"הולך רגל",t:"Noun",ex:"Stop for the pedestrian.",l:2,tp:"תחבורה"},
+{id:2704,en:"bicycle",he:"אופניים",t:"Noun",ex:"I ride my bicycle to work.",l:1,tp:"תחבורה"},
+{id:2705,en:"motorcycle",he:"אופנוע",t:"Noun",ex:"He rides a motorcycle.",l:1,tp:"תחבורה"},
+{id:2706,en:"electric vehicle",he:"רכב חשמלי",t:"Noun",ex:"I want an electric vehicle.",l:2,tp:"תחבורה"},
+{id:2707,en:"commute",he:"נסיעה לעבודה",t:"Noun",ex:"My commute takes one hour.",l:2,tp:"תחבורה"},
+{id:2708,en:"detour",he:"מסלול עוקף",t:"Noun",ex:"We had to take a detour.",l:3,tp:"תחבורה"},
+{id:2709,en:"fare",he:"מחיר כרטיס",t:"Noun",ex:"The bus fare is 5 shekels.",l:2,tp:"תחבורה"},
+{id:2710,en:"public transport",he:"תחבורה ציבורית",t:"Noun",ex:"Public transport is cheap here.",l:2,tp:"תחבורה"},
+// נושא: מסעדה נוסף
+{id:2801,en:"reservation",he:"הזמנת מקום",t:"Noun",ex:"I made a reservation for two.",l:2,tp:"מסעדה"},
+{id:2802,en:"portion",he:"מנה",t:"Noun",ex:"The portion was very large.",l:2,tp:"מסעדה"},
+{id:2803,en:"appetizer",he:"מנה ראשונה",t:"Noun",ex:"Let us order an appetizer.",l:2,tp:"מסעדה"},
+{id:2804,en:"takeaway",he:"מנה לקחת",t:"Noun",ex:"I will get a takeaway tonight.",l:1,tp:"מסעדה"},
+{id:2805,en:"buffet",he:"בופה",t:"Noun",ex:"The hotel has a great buffet.",l:1,tp:"מסעדה"},
+{id:2806,en:"sauce",he:"רוטב",t:"Noun",ex:"Pass the sauce please.",l:1,tp:"מסעדה"},
+{id:2807,en:"leftovers",he:"שאריות אוכל",t:"Noun",ex:"We ate the leftovers for lunch.",l:2,tp:"מסעדה"},
+{id:2808,en:"complimentary",he:"ללא תשלום",t:"Adj",ex:"The bread is complimentary.",l:3,tp:"מסעדה"},
+{id:2809,en:"vegan",he:"טבעוני",t:"Adj",ex:"She is vegan.",l:2,tp:"מסעדה"},
+{id:2810,en:"spoon",he:"כפית",t:"Noun",ex:"Can I have a spoon please?",l:1,tp:"מסעדה"},
+// נושא: אופנה נוסף
+{id:2901,en:"size",he:"מידה",t:"Noun",ex:"What size do you wear?",l:1,tp:"אופנה"},
+{id:2902,en:"fitting room",he:"חדר מדידה",t:"Noun",ex:"Can I use the fitting room?",l:2,tp:"אופנה"},
+{id:2903,en:"cotton",he:"כותנה",t:"Noun",ex:"I prefer cotton shirts.",l:2,tp:"אופנה"},
+{id:2904,en:"leather",he:"עור",t:"Noun",ex:"I bought leather shoes.",l:2,tp:"אופנה"},
+{id:2905,en:"accessory",he:"אביזר",t:"Noun",ex:"The bag is a great accessory.",l:2,tp:"אופנה"},
+{id:2906,en:"tight",he:"צמוד",t:"Adj",ex:"These jeans are too tight.",l:1,tp:"אופנה"},
+{id:2907,en:"loose",he:"רחב",t:"Adj",ex:"I prefer loose clothing.",l:1,tp:"אופנה"},
+{id:2908,en:"designer",he:"מעצב",t:"Noun",ex:"She wears designer clothes.",l:2,tp:"אופנה"},
+{id:2909,en:"second-hand",he:"יד שנייה",t:"Adj",ex:"I buy second-hand clothes.",l:2,tp:"אופנה"},
+{id:2910,en:"trend",he:"טרנד",t:"Noun",ex:"This color is a trend this year.",l:2,tp:"אופנה"},
+// נושא: שפה נוסף
+{id:3001,en:"dialect",he:"ניב",t:"Noun",ex:"Different regions have different dialects.",l:3,tp:"שפה"},
+{id:3002,en:"slang",he:"סלנג",t:"Noun",ex:"He uses a lot of slang.",l:2,tp:"שפה"},
+{id:3003,en:"pronunciation",he:"הגייה",t:"Noun",ex:"Work on your pronunciation.",l:2,tp:"שפה"},
+{id:3004,en:"bilingual",he:"דו לשוני",t:"Adj",ex:"She is perfectly bilingual.",l:3,tp:"שפה"},
+{id:3005,en:"native speaker",he:"דובר שפת אם",t:"Noun",ex:"She is a native English speaker.",l:2,tp:"שפה"},
+{id:3006,en:"phrase",he:"ביטוי",t:"Noun",ex:"Learn useful phrases for travel.",l:2,tp:"שפה"},
+{id:3007,en:"misunderstand",he:"להבין לא נכון",t:"Verb",ex:"I think you misunderstood me.",l:2,tp:"שפה"},
+{id:3008,en:"express",he:"לבטא",t:"Verb",ex:"Express yourself clearly.",l:2,tp:"שפה"},
+{id:3009,en:"hesitate",he:"להסס",t:"Verb",ex:"Do not hesitate to ask for help.",l:2,tp:"שפה"},
+{id:3010,en:"compliment",he:"מחמאה",t:"Noun",ex:"What a nice compliment!",l:2,tp:"שפה"},
+// נושא: מדע נוסף
+{id:3101,en:"gravity",he:"כבידה",t:"Noun",ex:"Gravity pulls everything down.",l:2,tp:"מדע"},
+{id:3102,en:"molecule",he:"מולקולה",t:"Noun",ex:"Water is made of molecules.",l:3,tp:"מדע"},
+{id:3103,en:"atom",he:"אטום",t:"Noun",ex:"Everything is made of atoms.",l:2,tp:"מדע"},
+{id:3104,en:"telescope",he:"טלסקופ",t:"Noun",ex:"The telescope shows distant stars.",l:2,tp:"מדע"},
+{id:3105,en:"microscope",he:"מיקרוסקופ",t:"Noun",ex:"Look through the microscope.",l:2,tp:"מדע"},
+{id:3106,en:"chemical",he:"כימי",t:"Adj",ex:"Be careful with chemical reactions.",l:2,tp:"מדע"},
+{id:3107,en:"hypothesis",he:"השערה",t:"Noun",ex:"We need to test the hypothesis.",l:3,tp:"מדע"},
+{id:3108,en:"cell",he:"תא",t:"Noun",ex:"Our body is made of cells.",l:2,tp:"מדע"},
+{id:3109,en:"radiation",he:"קרינה",t:"Noun",ex:"Too much radiation is dangerous.",l:3,tp:"מדע"},
+{id:3110,en:"physics",he:"פיזיקה",t:"Noun",ex:"Physics is my favorite subject.",l:2,tp:"מדע"},
+// נושא: ערכים נוסף
+{id:3201,en:"reliable",he:"אמין",t:"Adj",ex:"She is the most reliable person I know.",l:2,tp:"ערכים"},
+{id:3202,en:"humble",he:"צנוע",t:"Adj",ex:"Stay humble even when successful.",l:2,tp:"ערכים"},
+{id:3203,en:"empathy",he:"אמפתיה",t:"Noun",ex:"Show empathy to others.",l:3,tp:"ערכים"},
+{id:3204,en:"integrity",he:"יושרה",t:"Noun",ex:"Act with integrity always.",l:3,tp:"ערכים"},
+{id:3205,en:"tolerance",he:"סובלנות",t:"Noun",ex:"We need more tolerance in society.",l:3,tp:"ערכים"},
+{id:3206,en:"determination",he:"נחישות",t:"Noun",ex:"Her determination helped her succeed.",l:3,tp:"ערכים"},
+{id:3207,en:"optimistic",he:"אופטימי",t:"Adj",ex:"Try to be optimistic.",l:2,tp:"ערכים"},
+{id:3208,en:"flexible",he:"גמיש",t:"Adj",ex:"You need to be flexible at work.",l:2,tp:"ערכים"},
+{id:3209,en:"overcome",he:"להתגבר על",t:"Verb",ex:"You can overcome any challenge.",l:2,tp:"ערכים"},
+{id:3210,en:"wisdom",he:"חוכמה",t:"Noun",ex:"With age comes wisdom.",l:2,tp:"ערכים"},
+// נושא: היסטוריה נוסף
+{id:3301,en:"conflict",he:"סכסוך",t:"Noun",ex:"The conflict lasted for years.",l:2,tp:"היסטוריה"},
+{id:3302,en:"treaty",he:"הסכם",t:"Noun",ex:"Both sides signed the treaty.",l:3,tp:"היסטוריה"},
+{id:3303,en:"ancient",he:"עתיק",t:"Adj",ex:"This is an ancient city.",l:2,tp:"היסטוריה"},
+{id:3304,en:"civilization",he:"ציוויליזציה",t:"Noun",ex:"Ancient civilizations were very advanced.",l:3,tp:"היסטוריה"},
+{id:3305,en:"revolution",he:"מהפכה",t:"Noun",ex:"The revolution changed the country.",l:3,tp:"היסטוריה"},
+{id:3306,en:"empire",he:"אימפריה",t:"Noun",ex:"The Roman Empire was very powerful.",l:2,tp:"היסטוריה"},
+{id:3307,en:"protest",he:"מחאה",t:"Noun",ex:"Thousands joined the protest.",l:2,tp:"היסטוריה"},
+{id:3308,en:"citizen",he:"אזרח",t:"Noun",ex:"Every citizen has rights.",l:2,tp:"היסטוריה"},
+{id:3309,en:"parliament",he:"פרלמנט",t:"Noun",ex:"The parliament voted on the bill.",l:3,tp:"היסטוריה"},
+{id:3310,en:"policy",he:"מדיניות",t:"Noun",ex:"The new policy affects everyone.",l:3,tp:"היסטוריה"},
+// נושא: טבע נוסף
+{id:3401,en:"earthquake",he:"רעידת אדמה",t:"Noun",ex:"There was an earthquake last night.",l:2,tp:"טבע"},
+{id:3402,en:"river",he:"נהר",t:"Noun",ex:"The river is very wide.",l:1,tp:"טבע"},
+{id:3403,en:"flower",he:"פרח",t:"Noun",ex:"She loves flowers.",l:1,tp:"טבע"},
+{id:3404,en:"mountain",he:"הר",t:"Noun",ex:"We climbed the mountain.",l:1,tp:"טבע"},
+{id:3405,en:"wildlife",he:"חיות בר",t:"Noun",ex:"Africa has amazing wildlife.",l:2,tp:"טבע"},
+{id:3406,en:"tropical",he:"טרופי",t:"Adj",ex:"It is a tropical island.",l:2,tp:"טבע"},
+{id:3407,en:"season",he:"עונה",t:"Noun",ex:"Spring is my favorite season.",l:1,tp:"טבע"},
+{id:3408,en:"rain",he:"גשם",t:"Noun",ex:"It will rain tomorrow.",l:1,tp:"טבע"},
+{id:3409,en:"sunshine",he:"שמש",t:"Noun",ex:"I love sunshine in the morning.",l:1,tp:"טבע"},
+{id:3410,en:"wind",he:"רוח",t:"Noun",ex:"The wind is very strong today.",l:1,tp:"טבע"},
+// נושא: בית נוסף
+{id:3501,en:"balcony",he:"מרפסת",t:"Noun",ex:"We have a big balcony.",l:1,tp:"בית"},
+{id:3502,en:"garage",he:"מוסך",t:"Noun",ex:"The car is in the garage.",l:1,tp:"בית"},
+{id:3503,en:"laundry",he:"כביסה",t:"Noun",ex:"I do laundry on Sundays.",l:1,tp:"בית"},
+{id:3504,en:"ceiling",he:"תקרה",t:"Noun",ex:"The ceiling is very high.",l:1,tp:"בית"},
+{id:3505,en:"basement",he:"מרתף",t:"Noun",ex:"The wine is in the basement.",l:2,tp:"בית"},
+{id:3506,en:"storage",he:"אחסון",t:"Noun",ex:"I need more storage space.",l:2,tp:"בית"},
+{id:3507,en:"appliance",he:"מכשיר חשמלי",t:"Noun",ex:"The appliance needs fixing.",l:2,tp:"בית"},
+{id:3508,en:"decorate",he:"לקשט",t:"Verb",ex:"Let us decorate the living room.",l:2,tp:"בית"},
+{id:3509,en:"repair",he:"לתקן",t:"Verb",ex:"I need to repair the sink.",l:2,tp:"בית"},
+{id:3510,en:"landlord",he:"בעל הבית",t:"Noun",ex:"The landlord raised the rent.",l:2,tp:"בית"},
+// נושא: לימודים נוסף
+{id:3601,en:"scholarship",he:"מלגה",t:"Noun",ex:"She got a full scholarship.",l:3,tp:"לימודים"},
+{id:3602,en:"graduate",he:"לסיים לימודים",t:"Verb",ex:"He will graduate next year.",l:2,tp:"לימודים"},
+{id:3603,en:"essay",he:"חיבור",t:"Noun",ex:"Write an essay about the topic.",l:2,tp:"לימודים"},
+{id:3604,en:"library",he:"ספרייה",t:"Noun",ex:"I study at the library.",l:1,tp:"לימודים"},
+{id:3605,en:"curriculum",he:"תוכנית לימודים",t:"Noun",ex:"The curriculum changed this year.",l:3,tp:"לימודים"},
+{id:3606,en:"degree",he:"תואר",t:"Noun",ex:"She has a degree in medicine.",l:2,tp:"לימודים"},
+{id:3607,en:"deadline",he:"מועד אחרון להגשה",t:"Noun",ex:"The essay deadline is tomorrow.",l:2,tp:"לימודים"},
+{id:3608,en:"practice",he:"לתרגל",t:"Verb",ex:"Practice makes perfect.",l:1,tp:"לימודים"},
+{id:3609,en:"explain",he:"להסביר",t:"Verb",ex:"Can you explain this to me?",l:1,tp:"לימודים"},
+{id:3610,en:"lesson",he:"שיעור",t:"Noun",ex:"The lesson starts at 8am.",l:1,tp:"לימודים"},
+// נושא: בריאות נוסף
+{id:3701,en:"appointment",he:"תור",t:"Noun",ex:"I have a doctor appointment.",l:2,tp:"בריאות"},
+{id:3702,en:"prescription",he:"מרשם",t:"Noun",ex:"The doctor gave me a prescription.",l:2,tp:"בריאות"},
+{id:3703,en:"surgery",he:"ניתוח",t:"Noun",ex:"She needs surgery on her knee.",l:3,tp:"בריאות"},
+{id:3704,en:"vitamin",he:"ויטמין",t:"Noun",ex:"Take your vitamins every morning.",l:1,tp:"בריאות"},
+{id:3705,en:"diet",he:"דיאטה",t:"Noun",ex:"She is on a strict diet.",l:2,tp:"בריאות"},
+{id:3706,en:"breathe",he:"לנשום",t:"Verb",ex:"Take a deep breath and relax.",l:1,tp:"בריאות"},
+{id:3707,en:"injury",he:"פציעה",t:"Noun",ex:"He has a knee injury.",l:2,tp:"בריאות"},
+{id:3708,en:"mental health",he:"בריאות נפשית",t:"Noun",ex:"Mental health is very important.",l:2,tp:"בריאות"},
+{id:3709,en:"pain",he:"כאב",t:"Noun",ex:"I have pain in my back.",l:1,tp:"בריאות"},
+{id:3710,en:"recover",he:"להתאושש",t:"Verb",ex:"It takes time to recover.",l:2,tp:"בריאות"},
+// נושא: טכנולוגיה נוסף
+{id:3801,en:"algorithm",he:"אלגוריתם",t:"Noun",ex:"The algorithm finds the best route.",l:3,tp:"טכנולוגיה"},
+{id:3802,en:"database",he:"מסד נתונים",t:"Noun",ex:"The database stores all the data.",l:2,tp:"טכנולוגיה"},
+{id:3803,en:"wireless",he:"אלחוטי",t:"Adj",ex:"I use a wireless keyboard.",l:2,tp:"טכנולוגיה"},
+{id:3804,en:"backup",he:"גיבוי",t:"Noun",ex:"Always backup your files.",l:2,tp:"טכנולוגיה"},
+{id:3805,en:"update",he:"לעדכן",t:"Verb",ex:"Please update your account info.",l:1,tp:"טכנולוגיה"},
+{id:3806,en:"search",he:"לחפש",t:"Verb",ex:"Search for the answer online.",l:1,tp:"טכנולוגיה"},
+{id:3807,en:"share",he:"לשתף",t:"Verb",ex:"Share the post with your friends.",l:1,tp:"טכנולוגיה"},
+{id:3808,en:"stream",he:"לשדר",t:"Verb",ex:"I stream music all day.",l:2,tp:"טכנולוגיה"},
+{id:3809,en:"username",he:"שם משתמש",t:"Noun",ex:"Choose a unique username.",l:1,tp:"טכנולוגיה"},
+{id:3810,en:"virus",he:"וירוס",t:"Noun",ex:"My computer has a virus.",l:2,tp:"טכנולוגיה"},
+// נושא: עבודה נוסף
+{id:3901,en:"boss",he:"בוס",t:"Noun",ex:"My boss is very strict.",l:1,tp:"עבודה"},
+{id:3902,en:"hire",he:"לגייס",t:"Verb",ex:"We need to hire new staff.",l:2,tp:"עבודה"},
+{id:3903,en:"fired",he:"פוטר",t:"Adj",ex:"He got fired yesterday.",l:2,tp:"עבודה"},
+{id:3904,en:"resume",he:"קורות חיים",t:"Noun",ex:"Send me your resume.",l:2,tp:"עבודה"},
+{id:3905,en:"promote",he:"לקדם",t:"Verb",ex:"She was promoted to manager.",l:2,tp:"עבודה"},
+{id:3906,en:"negotiate",he:"לנהל משא ומתן",t:"Verb",ex:"They negotiated for hours.",l:3,tp:"עבודה"},
+{id:3907,en:"client",he:"לקוח",t:"Noun",ex:"The client is always right.",l:2,tp:"עבודה"},
+{id:3908,en:"contract",he:"חוזה",t:"Noun",ex:"Sign the contract before starting.",l:2,tp:"עבודה"},
+{id:3909,en:"overtime",he:"שעות נוספות",t:"Noun",ex:"I worked overtime this week.",l:2,tp:"עבודה"},
+{id:3910,en:"remote work",he:"עבודה מרחוק",t:"Noun",ex:"I do remote work from home.",l:2,tp:"עבודה"},
+// נושא: אוכל נוסף
+{id:4001,en:"fruit",he:"פרי",t:"Noun",ex:"I eat fruit every day.",l:1,tp:"אוכל"},
+{id:4002,en:"sweet",he:"מתוק",t:"Adj",ex:"This cake is very sweet.",l:1,tp:"אוכל"},
+{id:4003,en:"ingredient",he:"מרכיב",t:"Noun",ex:"The main ingredient is garlic.",l:2,tp:"אוכל"},
+{id:4004,en:"portion size",he:"גודל מנה",t:"Noun",ex:"The portion size is too small.",l:2,tp:"אוכל"},
+{id:4005,en:"bake",he:"לאפות",t:"Verb",ex:"I love to bake cakes.",l:1,tp:"אוכל"},
+{id:4006,en:"fry",he:"לטגן",t:"Verb",ex:"Fry the onions for 5 minutes.",l:1,tp:"אוכל"},
+{id:4007,en:"taste",he:"טעם",t:"Noun",ex:"This has a great taste.",l:1,tp:"אוכל"},
+{id:4008,en:"sour",he:"חמוץ",t:"Adj",ex:"This lemon is very sour.",l:1,tp:"אוכל"},
+{id:4009,en:"bitter",he:"מר",t:"Adj",ex:"The coffee is bitter.",l:1,tp:"אוכל"},
+{id:4010,en:"nutrition",he:"תזונה",t:"Noun",ex:"Good nutrition is very important.",l:2,tp:"אוכל"},
+// נושא: טיולים נוסף
+{id:4101,en:"map",he:"מפה",t:"Noun",ex:"I need a map of the city.",l:1,tp:"טיולים"},
+{id:4102,en:"currency",he:"מטבע חוץ",t:"Noun",ex:"What currency do they use?",l:2,tp:"טיולים"},
+{id:4103,en:"explore",he:"לחקור",t:"Verb",ex:"Let us explore the old city.",l:2,tp:"טיולים"},
+{id:4104,en:"ticket",he:"כרטיס",t:"Noun",ex:"I bought a train ticket.",l:1,tp:"טיולים"},
+{id:4105,en:"tour guide",he:"מדריך תיירים",t:"Noun",ex:"Our tour guide was excellent.",l:2,tp:"טיולים"},
+{id:4106,en:"customs",he:"מכס",t:"Noun",ex:"We passed through customs quickly.",l:2,tp:"טיולים"},
+{id:4107,en:"jet lag",he:"ג'ט לג",t:"Noun",ex:"I always get jet lag after long flights.",l:2,tp:"טיולים"},
+{id:4108,en:"backpack",he:"תיק גב",t:"Noun",ex:"I travel with just a backpack.",l:1,tp:"טיולים"},
+{id:4109,en:"landmark",he:"אתר היסטורי",t:"Noun",ex:"The Eiffel Tower is a famous landmark.",l:2,tp:"טיולים"},
+{id:4110,en:"visa",he:"ויזה",t:"Noun",ex:"Do I need a visa for this country?",l:2,tp:"טיולים"},
+// סיום — מילים כלליות נוספות
+{id:4201,en:"opportunity",he:"הזדמנות",t:"Noun",ex:"This is a great opportunity.",l:2,tp:"כללי"},
+{id:4202,en:"experience",he:"חוויה",t:"Noun",ex:"It was an amazing experience.",l:2,tp:"כללי"},
+{id:4203,en:"situation",he:"מצב",t:"Noun",ex:"This is a difficult situation.",l:2,tp:"כללי"},
+{id:4204,en:"solution",he:"פתרון",t:"Noun",ex:"We found a solution to the problem.",l:2,tp:"כללי"},
+{id:4205,en:"improve",he:"לשפר",t:"Verb",ex:"I want to improve my English.",l:2,tp:"כללי"},
+{id:4206,en:"perfect",he:"מושלם",t:"Adj",ex:"Practice makes perfect.",l:1,tp:"כללי"},
+{id:4207,en:"careful",he:"זהיר",t:"Adj",ex:"Be careful when crossing the road.",l:1,tp:"כללי"},
+{id:4208,en:"boring",he:"משעמם",t:"Adj",ex:"The class was very boring.",l:1,tp:"כללי"},
+{id:4209,en:"interesting",he:"מעניין",t:"Adj",ex:"That is a very interesting idea.",l:1,tp:"כללי"},
+{id:4210,en:"succeed",he:"להצליח",t:"Verb",ex:"Work hard and you will succeed.",l:2,tp:"כללי"},
+{id:4211,en:"fail",he:"להיכשל",t:"Verb",ex:"It is okay to fail sometimes.",l:2,tp:"כללי"},
+{id:4212,en:"respect",he:"כבוד",t:"Noun",ex:"Treat everyone with respect.",l:1,tp:"כללי"},
+{id:4213,en:"trust",he:"אמון",t:"Noun",ex:"Trust is very important in relationships.",l:2,tp:"כללי"},
+{id:4214,en:"popular",he:"פופולרי",t:"Adj",ex:"He is very popular at school.",l:1,tp:"כללי"},
+{id:4215,en:"dangerous",he:"מסוכן",t:"Adj",ex:"Driving fast is very dangerous.",l:2,tp:"כללי"},
+{id:4216,en:"safe",he:"בטוח",t:"Adj",ex:"This neighborhood is very safe.",l:1,tp:"כללי"},
+{id:4217,en:"modern",he:"מודרני",t:"Adj",ex:"This is a very modern city.",l:2,tp:"כללי"},
+{id:4218,en:"traditional",he:"מסורתי",t:"Adj",ex:"We have a traditional Shabbat dinner.",l:2,tp:"כללי"},
+{id:4219,en:"global",he:"גלובלי",t:"Adj",ex:"English is a global language.",l:2,tp:"כללי"},
+{id:4220,en:"local",he:"מקומי",t:"Adj",ex:"I prefer local products.",l:1,tp:"כללי"},
+{id:4221,en:"main",he:"עיקרי",t:"Adj",ex:"What is the main idea?",l:1,tp:"כללי"},
+{id:4222,en:"recent",he:"אחרון",t:"Adj",ex:"What are the recent news?",l:2,tp:"כללי"},
+{id:4223,en:"common",he:"נפוץ",t:"Adj",ex:"This is a very common mistake.",l:2,tp:"כללי"},
+{id:4224,en:"certain",he:"בטוח",t:"Adj",ex:"I am certain about this.",l:2,tp:"כללי"},
+{id:4225,en:"similar",he:"דומה",t:"Adj",ex:"These two words are very similar.",l:2,tp:"כללי"},
+{id:4226,en:"possible",he:"אפשרי",t:"Adj",ex:"Is it possible to finish today?",l:1,tp:"כללי"},
+{id:4227,en:"necessary",he:"הכרחי",t:"Adj",ex:"Is it necessary to come early?",l:2,tp:"כללי"},
+{id:4228,en:"available",he:"זמין",t:"Adj",ex:"Is the manager available?",l:2,tp:"כללי"},
+{id:4229,en:"responsible",he:"אחראי",t:"Adj",ex:"Be responsible for your actions.",l:2,tp:"כללי"},
+{id:4230,en:"independent",he:"עצמאי",t:"Adj",ex:"She is very independent.",l:2,tp:"כללי"},
+{id:4231,en:"involve",he:"לערב",t:"Verb",ex:"I want to involve everyone.",l:2,tp:"כללי"},
+{id:4232,en:"include",he:"לכלול",t:"Verb",ex:"Does the price include tax?",l:2,tp:"כללי"},
+{id:4233,en:"require",he:"לדרוש",t:"Verb",ex:"This job requires experience.",l:2,tp:"כללי"},
+{id:4234,en:"provide",he:"לספק",t:"Verb",ex:"We provide all the equipment.",l:2,tp:"כללי"},
+{id:4235,en:"continue",he:"להמשיך",t:"Verb",ex:"Please continue with your story.",l:1,tp:"כללי"},
+{id:4236,en:"develop",he:"לפתח",t:"Verb",ex:"We need to develop new skills.",l:2,tp:"כללי"},
+{id:4237,en:"create",he:"ליצור",t:"Verb",ex:"Let us create something new.",l:1,tp:"כללי"},
+{id:4238,en:"manage",he:"לנהל",t:"Verb",ex:"Can you manage this project?",l:2,tp:"כללי"},
+{id:4239,en:"increase",he:"להגדיל",t:"Verb",ex:"We need to increase our sales.",l:2,tp:"כללי"},
+{id:4240,en:"reduce",he:"להפחית",t:"Verb",ex:"We need to reduce waste.",l:2,tp:"כללי"},
+{id:4241,en:"protect",he:"להגן",t:"Verb",ex:"We must protect the environment.",l:2,tp:"כללי"},
+{id:4242,en:"prevent",he:"למנוע",t:"Verb",ex:"We must prevent accidents.",l:2,tp:"כללי"},
+{id:4243,en:"support",he:"לתמוך",t:"Verb",ex:"I always support my friends.",l:2,tp:"כללי"},
+{id:4244,en:"describe",he:"לתאר",t:"Verb",ex:"Can you describe what happened?",l:2,tp:"כללי"},
+{id:4245,en:"suggest",he:"להציע",t:"Verb",ex:"Can you suggest a good restaurant?",l:2,tp:"כללי"},
+{id:4246,en:"accept",he:"לקבל",t:"Verb",ex:"I accept your apology.",l:2,tp:"כללי"},
+{id:4247,en:"refuse",he:"לסרב",t:"Verb",ex:"I refuse to give up.",l:2,tp:"כללי"},
+{id:4248,en:"prefer",he:"להעדיף",t:"Verb",ex:"I prefer tea over coffee.",l:1,tp:"כללי"},
+{id:4249,en:"imagine",he:"לדמיין",t:"Verb",ex:"Imagine a world without problems.",l:2,tp:"כללי"},
+{id:4250,en:"celebrate",he:"לחגוג",t:"Verb",ex:"Let us celebrate your success!",l:1,tp:"כללי"},
+];
+
+const FL=50;
+const TP=["הכל","אוכל","עבודה","טיולים","רגשות","בריאות","טכנולוגיה","לימודים","טבע","בית","ספורט","כסף","משפחה","בידור","תחבורה","מסעדה","אופנה","שפה","מדע","ערכים","היסטוריה"];
+const TI={"הכל":"🔤","אוכל":"🍕","עבודה":"💼","טיולים":"✈️","רגשות":"❤️","בריאות":"🏥","טכנולוגיה":"💻","לימודים":"📚","טבע":"🌿","בית":"🏠","ספורט":"⚽","כסף":"🏦","משפחה":"👨‍👩‍👧","בידור":"🎭","תחבורה":"🚗","מסעדה":"🍽️","אופנה":"👗","שפה":"🗣️","מדע":"🧠","ערכים":"💪","היסטוריה":"🏛️"};
+const FQ=[
+  {s:"I ___ breakfast every morning.",a:"eat",o:["eat","sleep","run","talk"],h:"לאכול"},
+  {s:"She feels ___ today.",a:"sad",o:["sad","big","small","happy"],h:"עצוב"},
+  {s:"Don't ___ your keys.",a:"forget",o:["forget","remember","decide","answer"],h:"לשכוח"},
+  {s:"We have a big ___.",a:"problem",o:["problem","question","feeling","answer"],h:"בעיה"},
+  {s:"Solar panels ___ energy.",a:"generate",o:["generate","impact","achieve","benefit"],h:"לייצר"},
+  {s:"Teachers ___ students.",a:"encourage",o:["encourage","establish","evaluate","promote"],h:"לעודד"},
+  {s:"This is a ___ discovery.",a:"significant",o:["significant","sufficient","different","difficult"],h:"משמעותי"},
+  {s:"Do you ___ me?",a:"understand",o:["understand","forget","decide","remember"],h:"להבין"},
+];
+const EM=["לא נורא אחי! 💪","הכל בסדר, אתה לומד!","תן בראש, אתה יכול!","אל תתייאש!"];
+const EF=["לא נורא אחותי! 💪","הכל בסדר, את לומדת!","תני בראש, את יכולה!","אל תתייאשי!"];
+
+// STATE
+function rls(k,d){try{var v=localStorage.getItem(k);return v!==null?JSON.parse(v):d;}catch(e){return d;}}
+function wls(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+
+var G={
+  gender: localStorage.getItem('bg_gender')||'male',
+  premium: rls('bg_premium',false),
+  learned: new Set(rls('bg_learned',[])),
+  coins: rls('bg_coins',0),
+  xp: rls('bg_xp',0),
+  streak: 0, todayDone: false,
+  soundOn: rls('bg_sound',true),
+  ci:0, cc:'הכל', ct:'הכל', cp:[],
+  qw:[], qi:0, qs:0, qtm:null, qt:10,
+  rw:[], ri:0, rs:0,
+  fw:[], fi:0, fs:0,
+  mc:[], mr:[], ms:null, msv:new Set(), mb:null, mt:0, mtm:null,
+  dt:'הכל'
+};
+
+(function(){
+  var d=rls('bg_streak',{});
+  var td=new Date().toDateString();
+  var yd=new Date(Date.now()-86400000).toDateString();
+  G.streak=(d.last===td||d.last===yd)?(d.count||0):0;
+  G.todayDone=(d.last===td);
+})();
+
+function av(){return G.premium?V:V.slice(0,FL);}
+function sf(a){return[].concat(a).sort(function(){return Math.random()-.5;});}
+function go(w,pool){
+  var s=pool.filter(function(x){return x.id!==w.id&&x.l===w.l;});
+  var src=s.length>=3?s:pool.filter(function(x){return x.id!==w.id;});
+  return sf(sf(src).slice(0,3).concat(w));
+}
+function enc(){var l=G.gender==='female'?EF:EM;return l[Math.floor(Math.random()*l.length)];}
+function ll(l){return l===1?'🟢 בסיסי':l===2?'🟡 בינוני':'🔴 מתקדם';}
+function ft(t){return Math.floor(t/60)+':'+(t%60<10?'0':'')+t%60;}
+function e(id){return document.getElementById(id);}
+
+// NAVIGATION
+var NONAV=['quiz-done','reverse-done','fill-done','match-done'];
+
+function goTo(name){
+  var all=document.querySelectorAll('.scr');
+  for(var i=0;i<all.length;i++){all[i].style.display='none';}
+  var el=e('s-'+name);
+  if(!el){console.error('Screen not found: s-'+name);return;}
+  el.style.display='block';
+  var nav=e('nav');
+  nav.style.display=NONAV.indexOf(name)>=0?'none':'flex';
+  var nbs=document.querySelectorAll('.nb');
+  for(var j=0;j<nbs.length;j++){nbs[j].classList.remove('on');}
+  var nb=e('nb-'+name);
+  if(nb)nb.classList.add('on');
+  document.body.scrollTop=0;
+  document.documentElement.scrollTop=0;
+  if(name==='home')renderHome();
+  if(name==='flashcard')initFC();
+  if(name==='dictionary')initDict();
+  if(name==='settings')renderSettings();
+}
+
+// TOAST
+var tTmr=null;
+function toast(tx){
+  var el=e('toast');
+  e('toast-tx').textContent=tx;
+  el.classList.add('on');
+  if(tTmr)clearTimeout(tTmr);
+  tTmr=setTimeout(function(){el.classList.remove('on');},2500);
+}
+
+// REWARDS
+function reward(c,x){G.coins+=c;G.xp+=x;wls('bg_coins',G.coins);wls('bg_xp',G.xp);}
+
+function markStreak(){
+  if(G.todayDone)return;
+  var td=new Date().toDateString();
+  var yd=new Date(Date.now()-86400000).toDateString();
+  var p=rls('bg_streak',{});
+  var nc=p.last===yd?(p.count||0)+1:1;
+  wls('bg_streak',{count:nc,last:td});
+  G.streak=nc;G.todayDone=true;reward(30,50);
+  if(nc>=3)toast('🔥 3 ימים ברצף!');
+  if(nc>=7)toast('⚡ שבוע שלם!');
+}
+
+// PAYWALL
+function openPaywall(){e('paywall').style.display='flex';}
+function closePaywall(){e('paywall').style.display='none';}
+function upgradePremium(){
+  G.premium=true;wls('bg_premium',true);
+  closePaywall();toast('👑 ברוכים הבאים לפרימיום!');renderHome();
+}
+
+// GENDER
+function setGender(g){
+  G.gender=g;localStorage.setItem('bg_gender',g);
+  renderSettings();renderHome();
+  toast(g==='female'?'👧 נקבה':'👦 זכר');
+}
+
+// SPEAK
+function speak(text,btn){
+  if(!G.soundOn||!window.speechSynthesis)return;
+  window.speechSynthesis.cancel();
+  var u=new SpeechSynthesisUtterance(text);
+  u.lang='en-US';u.rate=0.85;
+  var vs=window.speechSynthesis.getVoices();
+  var v=null;
+  for(var i=0;i<vs.length;i++){if(vs[i].lang==='en-US'){v=vs[i];break;}}
+  if(!v&&vs.length)v=vs[0];
+  if(v)u.voice=v;
+  if(btn){u.onstart=function(){btn.classList.add('on');};u.onend=u.onerror=function(){btn.classList.remove('on');};}
+  window.speechSynthesis.speak(u);
+}
+function speakW(){speak(G.cp[G.ci]?G.cp[G.ci].en:'',e('fc-spk'));}
+function speakQ(){speak(G.qw[G.qi]?G.qw[G.qi].en:'',e('q-spk'));}
+
+// HOME
+function renderHome(){
+  var lv=Math.floor(G.xp/100)+1,xb=G.xp%100;
+  e('h-lv').textContent='רמה '+lv;
+  e('h-co').textContent=G.coins;
+  e('h-xp').style.width=xb+'%';
+  e('h-xt').textContent=xb+'/100 XP';
+  e('h-sub').textContent=G.gender==='female'?'בואי ללמוד אנגלית! 🚀':'בוא ללמוד אנגלית! 🚀';
+  e('h-sd').textContent=G.streak+(G.streak===1?' יום':' ימים');
+  e('h-ss').textContent=G.todayDone?'✓ סיימת!':(G.gender==='female'?'השלימי חידון לשמור על הרצף':'השלם חידון לשמור על הרצף');
+  var stk=e('h-stk');
+  stk.style.background=G.todayDone?'rgba(52,199,89,.1)':'var(--sf)';
+  stk.style.border=G.todayDone?'1.5px solid var(--gn)':'none';
+  e('h-sb').style.display=G.todayDone?'none':'block';
+  e('h-w').textContent=av().length;
+  e('h-l').textContent=G.learned.size;
+  e('h-st').textContent=G.streak;
+  e('h-pb').style.display=G.premium?'none':'flex';
+  e('h-pa').style.display=G.premium?'flex':'none';
+  var M=[
+    {k:'flashcard',i:'🃏',bg:'#EDE9FE',ti:'כרטיסיות לימוד',su:'למד מילים עם כרטיסיות',p:false},
+    {k:'quiz',i:'🎯',bg:'#FEE2E2',ti:'חידון עם טיימר',su:'10 שניות לשאלה',p:false},
+    {k:'reverse',i:'🔄',bg:'#DBEAFE',ti:'חידון הפוך',su:'עברית ← אנגלית',p:true},
+    {k:'fill',i:'✍️',bg:'#D1FAE5',ti:'השלמת משפטים',su:'מלא את המילה החסרה',p:true},
+    {k:'match',i:'🔗',bg:'#FEF3C7',ti:'משחק התאמה',su:'חבר מילה לתרגום',p:true},
+    {k:'dictionary',i:'📖',bg:'#F3E8FF',ti:'מילון',su:'חפש מילים',p:false},
+  ];
+  var html='';
+  for(var i=0;i<M.length;i++){
+    var m=M[i];var locked=m.p&&!G.premium;
+    html+='<div class="card" id="hm'+i+'" style="display:flex;align-items:center;gap:14px;cursor:pointer;opacity:'+(locked?.85:1)+'">'+
+      '<div style="width:44px;height:44px;border-radius:11px;background:'+m.bg+';display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0">'+m.i+'</div>'+
+      '<div style="flex:1"><div style="font-weight:700;font-size:15px">'+m.ti+'</div><div style="font-size:12px;color:var(--tx3)">'+m.su+'</div></div>'+
+      '<span style="font-size:'+(locked?16:18)+'px;color:var(--tx4)">'+(locked?'🔒':'›')+'</span>'+
+      '</div>';
+  }
+  e('h-menu').innerHTML=html;
+  for(var j=0;j<M.length;j++){
+    (function(m){
+      e('hm'+M.indexOf(m)).onclick=function(){
+        if(m.p&&!G.premium){openPaywall();return;}
+        if(m.k==='quiz')startQuiz();
+        else if(m.k==='reverse')startReverse();
+        else if(m.k==='fill')startFill();
+        else if(m.k==='match')startMatch();
+        else goTo(m.k);
+      };
+    })(M[j]);
+  }
+}
+
+// FLASHCARD
+function buildPool(){
+  return av().filter(function(w){
+    var c=G.cc==='הכל'||(G.cc==='פעלים'&&w.t==='Verb')||(G.cc==='שמות עצם'&&w.t==='Noun')||(G.cc==='תארים'&&w.t==='Adj');
+    return c&&(G.ct==='הכל'||w.tp===G.ct);
+  });
+}
+function initFC(){
+  G.cp=buildPool();if(G.ci>=G.cp.length)G.ci=0;
+  var cats=['הכל','פעלים','שמות עצם','תארים'];
+  var ch='';for(var i=0;i<cats.length;i++){ch+='<button class="ctag '+(G.cc===cats[i]?'on':'')+'" onclick="setCat(\''+cats[i]+'\')">'+cats[i]+'</button>';}
+  e('fc-cats').innerHTML=ch;
+  var th='';for(var j=0;j<TP.length;j++){th+='<button class="ttag '+(G.ct===TP[j]?'on':'')+'" onclick="setFCT(\''+TP[j]+'\')">'+TI[TP[j]]+' '+TP[j]+'</button>';}
+  e('fc-tps').innerHTML=th;
+  renderCard();
+}
+function setCat(c){G.cc=c;G.ci=0;initFC();}
+function setFCT(t){G.ct=t;G.ci=0;initFC();}
+function renderCard(){
+  var p=G.cp;if(!p.length)return;
+  var w=p[G.ci];
+  var pct=(((G.ci+1)/p.length)*100)+'%';
+  e('fc-c').textContent=(G.ci+1)+'/'+p.length;
+  e('fc-p').style.width=pct;e('fc-p2').style.width=pct;
+  e('fc-tp').textContent=w.t;e('fc-en').textContent=w.en;
+  e('fc-he').textContent=w.he;e('fc-ex').textContent=w.ex;e('fc-ex2').textContent=w.ex;
+  e('fc').classList.remove('flip');
+  var lb=e('fc-lb');
+  if(G.learned.has(w.id)){lb.textContent='✓ נלמד!';lb.style.background='var(--gn)';}
+  else{lb.textContent='סמן כנלמד';lb.style.background='var(--p)';}
+}
+function flipCard(){e('fc').classList.toggle('flip');}
+function prevCard(){G.ci=(G.ci-1+G.cp.length)%G.cp.length;renderCard();}
+function nextCard(){G.ci=(G.ci+1)%G.cp.length;renderCard();}
+function toggleLearned(){
+  var w=G.cp[G.ci];
+  if(G.learned.has(w.id))G.learned.delete(w.id);else G.learned.add(w.id);
+  wls('bg_learned',[].concat(Array.from(G.learned)));renderCard();
+  if(G.learned.size===50)toast('📚 50 מילים נלמדו!');
+}
+
+// QUIZ
+function buildQuiz(){
+  var a=av();
+  var l1=sf(a.filter(function(w){return w.l===1;})).slice(0,4);
+  var l2=sf(a.filter(function(w){return w.l===2;})).slice(0,3);
+  var l3=sf(a.filter(function(w){return w.l===3;})).slice(0,3);
+  return l1.concat(l2).concat(l3);
+}
+function startQuiz(){
+  if(G.qtm)clearInterval(G.qtm);
+  G.qw=buildQuiz();G.qi=0;G.qs=0;
+  goTo('quiz');renderQuiz();runTimer();
+}
+function renderQuiz(){
+  var w=G.qw[G.qi];if(!w)return;
+  e('q-c').textContent=(G.qi+1)+'/10';
+  e('q-p').style.width=(G.qi/10*100)+'%';
+  e('q-lv').textContent=ll(w.l);
+  e('q-w').textContent=w.en;e('q-ex').textContent=w.ex;
+  e('q-enc').style.display='none';e('q-to').style.display='none';
+  e('q-w').style.animation='none';
+  var os=go(w,av());
+  var h='';for(var i=0;i<os.length;i++){h+='<button class="opt" onclick="ansQ('+os[i].id+')">'+os[i].he+'</button>';}
+  e('q-opts').innerHTML=h;
+}
+function runTimer(){
+  G.qt=10;updTimer();
+  G.qtm=setInterval(function(){
+    G.qt--;updTimer();
+    if(G.qt<=0){clearInterval(G.qtm);qTO();}
+  },1000);
+}
+function updTimer(){
+  var t=G.qt;
+  var col=t>6?'var(--gn)':t>3?'var(--or)':'var(--rd)';
+  var c=2*Math.PI*15;
+  e('q-tc').style.strokeDashoffset=''+(c*(1-t/10));
+  e('q-tc').style.stroke=col;
+  e('q-tt').textContent=t;e('q-tt').style.color=col;
+}
+function qTO(){
+  var w=G.qw[G.qi];
+  e('q-to').textContent='⏰ נגמר הזמן! התשובה: '+w.he;
+  e('q-to').style.display='block';
+  e('q-enc').textContent=enc();e('q-enc').style.display='block';
+  var btns=e('q-opts').querySelectorAll('.opt');
+  for(var i=0;i<btns.length;i++)btns[i].disabled=true;
+  setTimeout(function(){nextQ();},1300);
+}
+function ansQ(oid){
+  clearInterval(G.qtm);
+  var w=G.qw[G.qi];var ok=oid===w.id;
+  var a=av();
+  var btns=e('q-opts').querySelectorAll('.opt');
+  for(var i=0;i<btns.length;i++){
+    btns[i].disabled=true;
+    var bw=null;
+    for(var j=0;j<a.length;j++){if(a[j].he===btns[i].textContent){bw=a[j];break;}}
+    if(bw&&bw.id===w.id)btns[i].classList.add('ok');
+    else if(bw&&bw.id===oid&&!ok)btns[i].classList.add('no');
+  }
+  if(ok){G.qs++;reward(5,10);}
+  else{e('q-w').style.animation='shake .5s';e('q-enc').textContent=enc();e('q-enc').style.display='block';}
+  setTimeout(function(){nextQ();},1000);
+}
+function nextQ(){
+  G.qi++;
+  if(G.qi>=10)finQ();
+  else{renderQuiz();runTimer();}
+}
+function finQ(){
+  markStreak();reward(20,40);
+  if(G.qs>=10)toast('💎 מושלם! 10/10!');
+  var sc=G.qs;
+  e('qd-t').textContent=sc>=8?'🏆':sc>=5?'⭐':'💪';
+  e('qd-s').textContent=sc+'/10';
+  e('qd-m').textContent=sc>=8?(G.gender==='female'?'מעולה! את מוכנה! 🚀':'מעולה! אתה מוכן! 🚀'):(G.gender==='female'?'המשיכי להתאמן! 💪':'המשך להתאמן! 💪');
+  e('qd-sk').textContent=G.streak+' ימים ברצף!';
+  e('qd-r').textContent='🪙 +'+(sc*5+20)+' • ⚡ +'+(sc*10+40)+' XP';
+  goTo('quiz-done');
+}
+
+// REVERSE
+function startReverse(){
+  if(!G.premium){openPaywall();return;}
+  G.rw=sf(av()).slice(0,10);G.ri=0;G.rs=0;
+  goTo('reverse');renderRev();
+}
+function renderRev(){
+  var w=G.rw[G.ri];if(!w)return;
+  e('r-c').textContent=(G.ri+1)+'/10';
+  e('r-p').style.width=(G.ri/10*100)+'%';
+  e('r-w').textContent=w.he;e('r-ex').textContent=w.ex;
+  e('r-enc').style.display='none';
+  var os=go(w,av());
+  var h='';for(var i=0;i<os.length;i++){h+='<button class="opt ltr" onclick="ansR('+os[i].id+')">'+os[i].en+'</button>';}
+  e('r-opts').innerHTML=h;
+}
+function ansR(oid){
+  var w=G.rw[G.ri];var ok=oid===w.id;
+  var a=av();
+  var btns=e('r-opts').querySelectorAll('.opt');
+  for(var i=0;i<btns.length;i++){
+    btns[i].disabled=true;
+    var bw=null;
+    for(var j=0;j<a.length;j++){if(a[j].en===btns[i].textContent){bw=a[j];break;}}
+    if(bw&&bw.id===w.id)btns[i].classList.add('ok');
+    else if(bw&&bw.id===oid&&!ok)btns[i].classList.add('no');
+  }
+  if(ok){G.rs++;reward(5,10);}
+  else{e('r-enc').textContent=enc();e('r-enc').style.display='block';}
+  setTimeout(function(){
+    G.ri++;
+    if(G.ri>=10){reward(20,40);e('rd-t').textContent=G.rs>=8?'🏆':G.rs>=5?'⭐':'💪';e('rd-s').textContent=G.rs+'/10';goTo('reverse-done');}
+    else renderRev();
+  },1000);
+}
+
+// FILL
+function startFill(){
+  if(!G.premium){openPaywall();return;}
+  G.fw=sf(FQ);G.fi=0;G.fs=0;goTo('fill');renderFill();
+}
+function renderFill(){
+  var q=G.fw[G.fi];if(!q)return;
+  e('f-c').textContent=(G.fi+1)+'/'+G.fw.length;
+  e('f-p').style.width=(G.fi/G.fw.length*100)+'%';
+  var pts=q.s.split('___');
+  e('f-s').innerHTML=pts[0]+'<span class="bl" id="f-bl">___</span>'+pts[1];
+  e('f-h').textContent='רמז: '+q.h;
+  e('f-enc').style.display='none';
+  var h='';for(var i=0;i<q.o.length;i++){h+='<button class="fo" onclick="ansF(\''+q.o[i]+'\')">'+q.o[i]+'</button>';}
+  e('f-opts').innerHTML=h;
+}
+function ansF(opt){
+  var q=G.fw[G.fi];var ok=opt===q.a;
+  var bl=e('f-bl');bl.textContent=opt;bl.className='bl '+(ok?'ok':'no');
+  var btns=e('f-opts').querySelectorAll('.fo');
+  for(var i=0;i<btns.length;i++){
+    btns[i].disabled=true;
+    if(btns[i].textContent===q.a)btns[i].classList.add('ok');
+    else if(btns[i].textContent===opt&&!ok)btns[i].classList.add('no');
+  }
+  if(ok){G.fs++;reward(5,10);}
+  else{e('f-enc').textContent=enc();e('f-enc').style.display='block';}
+  setTimeout(function(){
+    G.fi++;
+    if(G.fi>=G.fw.length){reward(20,30);e('fd-t').textContent=G.fs>=6?'🌟':G.fs>=4?'⭐':'💪';e('fd-s').textContent=G.fs+'/'+G.fw.length;goTo('fill-done');}
+    else renderFill();
+  },1000);
+}
+
+// MATCH
+function startMatch(){
+  if(!G.premium){openPaywall();return;}
+  if(G.mtm)clearInterval(G.mtm);
+  G.mc=sf(av()).slice(0,6);G.mr=sf(G.mc);
+  G.ms=null;G.msv=new Set();G.mb=null;G.mt=0;
+  goTo('match');renderMatch();
+  G.mtm=setInterval(function(){G.mt++;e('m-t').textContent='⏱ '+ft(G.mt);},1000);
+}
+function renderMatch(){
+  e('m-p').textContent=G.msv.size+'/'+G.mc.length;
+  var h='';
+  for(var i=0;i<G.mc.length;i++){
+    var w=G.mc[i];
+    var dn=G.msv.has(w.id);
+    var sl=G.ms&&G.ms.id===w.id&&G.ms.s==='L';
+    var bd=G.mb&&((G.mb.a.id===w.id&&G.mb.a.s==='L')||(G.mb.b.id===w.id&&G.mb.b.s==='L'));
+    h+='<button class="mb '+(dn?'dn':bd?'bd':sl?'sel':'')+'" onclick="tapM('+w.id+',\'L\')" '+(dn?'disabled':'')+'>'+w.en+'</button>';
+  }
+  for(var j=0;j<G.mr.length;j++){
+    var wr=G.mr[j];
+    var dnr=G.msv.has(wr.id);
+    var slr=G.ms&&G.ms.id===wr.id&&G.ms.s==='R';
+    var bdr=G.mb&&((G.mb.a.id===wr.id&&G.mb.a.s==='R')||(G.mb.b.id===wr.id&&G.mb.b.s==='R'));
+    h+='<button class="mb '+(dnr?'dn':bdr?'bd':slr?'sel':'')+'" onclick="tapM('+wr.id+',\'R\')" '+(dnr?'disabled':'')+'>'+wr.he+'</button>';
+  }
+  e('m-g').innerHTML=h;
+}
+function tapM(id,s){
+  if(G.msv.has(id)||G.mb)return;
+  if(!G.ms){G.ms={id:id,s:s};renderMatch();return;}
+  if(G.ms.id===id&&G.ms.s===s){G.ms=null;renderMatch();return;}
+  if(G.ms.s===s){G.ms={id:id,s:s};renderMatch();return;}
+  if(G.ms.id===id){
+    G.msv.add(id);G.ms=null;renderMatch();
+    if(G.msv.size===G.mc.length){
+      clearInterval(G.mtm);reward(30,50);
+      if(G.mt<30)toast('⚡ מהיר/ה מאוד!');
+      setTimeout(function(){e('md-t').textContent='⏱ '+ft(G.mt);goTo('match-done');},400);
+    }
+  } else {
+    G.mb={a:G.ms,b:{id:id,s:s}};G.ms=null;renderMatch();
+    setTimeout(function(){G.mb=null;renderMatch();},700);
+  }
+}
+
+// DICT
+function initDict(){
+  var h='';for(var i=0;i<TP.length;i++){h+='<button class="ttag '+(G.dt===TP[i]?'on':'')+'" onclick="setDT(\''+TP[i]+'\')">'+TI[TP[i]]+' '+TP[i]+'</button>';}
+  e('d-tps').innerHTML=h;
+  renderDict();
+}
+function setDT(t){G.dt=t;initDict();}
+function renderDict(){
+  var q=(e('d-s')||{}).value||'';
+  var a=av();
+  var res=a.filter(function(w){
+    var mq=!q||w.en.toLowerCase().indexOf(q.toLowerCase())>=0||w.he.indexOf(q)>=0;
+    return mq&&(G.dt==='הכל'||w.tp===G.dt);
+  });
+  e('d-c').textContent=res.length+' מילים';
+  var h='';
+  for(var i=0;i<res.length;i++){
+    var w=res[i];
+    h+='<div class="wr">'+
+      '<div style="flex:1">'+
+        '<div style="display:flex;align-items:center;gap:8px">'+
+          '<span style="font-weight:700;font-size:16px;color:var(--tx)">'+w.en+'</span>'+
+          '<button class="spk" onclick="speak(\''+w.en.replace(/'/g,"\\'")+"',this)\">🔈</button>"+
+        '</div>'+
+        '<div style="font-size:13px;color:var(--tx2);margin-top:2px;direction:rtl">'+w.he+'</div>'+
+      '</div>'+
+      '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">'+
+        '<span class="tag">'+w.t+'</span>'+
+        '<button class="lb '+(G.learned.has(w.id)?'on':'')+'" onclick="tlD('+w.id+',this)">✓</button>'+
+      '</div>'+
+    '</div>';
+  }
+  e('d-l').innerHTML=h;
+}
+function tlD(id,btn){
+  if(G.learned.has(id))G.learned.delete(id);else G.learned.add(id);
+  wls('bg_learned',[].concat(Array.from(G.learned)));btn.classList.toggle('on');
+  if(G.learned.size===50)toast('📚 50 מילים נלמדו!');
+}
+
+// SETTINGS
+function renderSettings(){
+  var f=G.gender==='female';
+  e('st-gi').textContent=f?'👧':'👦';
+  e('st-gl').textContent=f?'נקבה':'זכר';
+  e('st-s1').textContent=G.learned.size;
+  e('st-s2').textContent=G.streak;
+  e('st-s3').textContent=Math.floor(G.xp/100)+1;
+  if(G.premium){e('st-pt').textContent='פרימיום פעיל 👑';e('st-ps').textContent='500 מילים';e('st-ub').style.display='none';}
+  else{e('st-pt').textContent='תוכנית חינמית';e('st-ps').textContent='50 מילים';e('st-ub').style.display='block';}
+  e('tgl-s').classList.toggle('on',G.soundOn);
+  var a='padding:7px 14px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;border:1.5px solid var(--p);background:var(--pl);color:var(--p)';
+  var n='padding:7px 14px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;border:1.5px solid var(--bd);background:var(--sf2);color:var(--tx)';
+  e('st-bm').style.cssText=f?n:a;
+  e('st-bf').style.cssText=f?a:n;
+}
+function toggleSound(){G.soundOn=!G.soundOn;wls('bg_sound',G.soundOn);e('tgl-s').classList.toggle('on',G.soundOn);}
+function resetProgress(){if(!confirm('לאפס XP, מטבעות ורצף?'))return;G.xp=0;G.coins=0;G.streak=0;G.todayDone=false;wls('bg_xp',0);wls('bg_coins',0);wls('bg_streak',{});toast('🔄 אופס');renderSettings();}
+function resetLearned(){if(!confirm('לאפס מילים שנלמדו?'))return;G.learned=new Set();wls('bg_learned',[]);toast('📚 אופס');renderSettings();}
+function resetPremium(){if(!confirm('לאפס מנוי?'))return;G.premium=false;wls('bg_premium',false);toast('👑 מנוי אופס');renderHome();renderSettings();}
+
+// ── INIT ── runs when page loads
+document.addEventListener('DOMContentLoaded', function() {
+  // Clear old PWA cache if upgrading from old version
+  var ver = localStorage.getItem('bg_ver');
+  if (ver !== '3') {
+    // New version — remove old gender screen flag but keep progress
+    localStorage.removeItem('bg_gender_screen');
+    localStorage.setItem('bg_ver', '3');
+    // Set default gender if not set
+    if (!localStorage.getItem('bg_gender')) {
+      localStorage.setItem('bg_gender', 'male');
+      G.gender = 'male';
+    }
+  }
+  // Hide all screens
+  var screens = document.querySelectorAll('.scr');
+  for (var i = 0; i < screens.length; i++) {
+    screens[i].style.display = 'none';
+  }
+  // Hide nav and paywall
+  e('nav').style.display = 'none';
+  e('paywall').style.display = 'none';
+  // Init speech
+  if (window.speechSynthesis) {
+    window.speechSynthesis.getVoices();
+    window.speechSynthesis.onvoiceschanged = function() {};
+  }
+  // Go directly to home — NO gender screen
+  goTo('home');
+});
+</script>
+</body>
+</html>
