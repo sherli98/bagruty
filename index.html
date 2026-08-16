@@ -421,6 +421,35 @@ input[type=search]{width:100%;padding:12px 16px;background:var(--sf);border:1.5p
 </div>
 </div>
 
+<!-- ELECTRICIAN QUIZ -->
+<div id="s-elecquiz" class="scr">
+<div class="hdr"><div class="hrow">
+  <span style="font-weight:700;font-size:15px">⚡ חידון חשמלאים</span>
+  <span style="font-size:12px;color:var(--tx3)" id="eq-counter">1/10</span>
+</div></div>
+<div class="prog"><div class="pf" id="eq-prog" style="width:0%"></div></div>
+<div style="font-size:12px;color:var(--tx3);text-align:center;margin-bottom:8px;font-weight:500">האזן למונח ובחר את התרגום הנכון</div>
+<div style="background:var(--pl);border-radius:14px;padding:24px;text-align:center;margin-bottom:20px">
+  <div style="font-size:28px;font-weight:900;color:var(--p);letter-spacing:-.5px;margin-bottom:12px" id="eq-word">voltage</div>
+  <button id="eq-speak-btn" onclick="speakElecWord()" style="width:56px;height:56px;border-radius:50%;background:var(--p);border:none;font-size:24px;color:#fff;box-shadow:0 4px 16px rgba(124,58,237,.4);margin-bottom:10px;transition:transform .1s" onmousedown="this.style.transform='scale(.95)'" onmouseup="this.style.transform='scale(1)'">🔈</button>
+  <div style="font-size:11px;color:var(--tx3);font-style:italic" id="eq-ex"></div>
+</div>
+<div id="eq-opts"></div>
+<div id="eq-enc" style="display:none;background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.3);border-radius:12px;padding:10px 16px;text-align:center;margin-top:8px;color:#F97316;font-weight:700;font-size:14px"></div>
+<div id="eq-reveal" style="display:none;background:var(--pl);border-radius:12px;padding:10px 16px;text-align:center;margin-top:8px">
+  <div style="font-size:11px;color:var(--tx3)">המונח היה:</div>
+  <div style="font-size:18px;font-weight:800;color:var(--p)" id="eq-reveal-word"></div>
+</div>
+</div>
+<div id="s-elecquiz-done" class="scr sc">
+  <div style="font-size:72px;margin-bottom:12px" id="eqd-t">🏆</div>
+  <div style="font-size:28px;font-weight:800;margin-bottom:6px;color:var(--tx)">⚡ חידון חשמלאים</div>
+  <div style="font-size:54px;font-weight:900;letter-spacing:-1px;margin-bottom:8px;color:var(--tx)" id="eqd-s">0/10</div>
+  <div style="font-size:16px;color:var(--tx3);margin-bottom:28px" id="eqd-m">כל הכבוד!</div>
+  <button class="btn" onclick="startElecQuiz()">שחק שוב</button>
+  <button class="btng" onclick="goTo('home')">חזור לבית</button>
+</div>
+
 <!-- TOAST -->
 <div id="toast" class="toast"><span id="toast-tx"></span></div>
 
@@ -956,11 +985,62 @@ const V=[
 {id:4248,en:"prefer",he:"להעדיף",t:"Verb",ex:"I prefer tea over coffee.",l:1,tp:"כללי"},
 {id:4249,en:"imagine",he:"לדמיין",t:"Verb",ex:"Imagine a world without problems.",l:2,tp:"כללי"},
 {id:4250,en:"celebrate",he:"לחגוג",t:"Verb",ex:"Let us celebrate your success!",l:1,tp:"כללי"},
+// נושא: חשמל
+{id:5001,en:"electrician",he:"חשמלאי",t:"Noun",ex:"The electrician fixed the power.",l:1,tp:"חשמל"},
+{id:5002,en:"voltage",he:"מתח חשמלי",t:"Noun",ex:"The voltage is 220 volts.",l:2,tp:"חשמל"},
+{id:5003,en:"current",he:"זרם",t:"Noun",ex:"The current flows through the wire.",l:2,tp:"חשמל"},
+{id:5004,en:"resistance",he:"התנגדות",t:"Noun",ex:"The resistance is measured in ohms.",l:2,tp:"חשמל"},
+{id:5005,en:"circuit",he:"מעגל חשמלי",t:"Noun",ex:"The circuit is complete.",l:2,tp:"חשמל"},
+{id:5006,en:"fuse",he:"מבטח",t:"Noun",ex:"The fuse blew during the storm.",l:2,tp:"חשמל"},
+{id:5007,en:"switch",he:"מתג",t:"Noun",ex:"Turn off the switch.",l:1,tp:"חשמל"},
+{id:5008,en:"plug",he:"תקע",t:"Noun",ex:"Plug in the device.",l:1,tp:"חשמל"},
+{id:5009,en:"socket",he:"בית התקע",t:"Noun",ex:"The socket is on the wall.",l:1,tp:"חשמל"},
+{id:5010,en:"wire",he:"תיל",t:"Noun",ex:"The wire connects the two points.",l:1,tp:"חשמל"},
+{id:5011,en:"cable",he:"כבל",t:"Noun",ex:"Connect the cable to the device.",l:1,tp:"חשמל"},
+{id:5012,en:"insulation",he:"בידוד",t:"Noun",ex:"The insulation prevents electric shock.",l:2,tp:"חשמל"},
+{id:5013,en:"grounding",he:"הארקה",t:"Noun",ex:"Proper grounding is essential for safety.",l:2,tp:"חשמל"},
+{id:5014,en:"transformer",he:"שנאי",t:"Noun",ex:"The transformer converts high voltage to low.",l:3,tp:"חשמל"},
+{id:5015,en:"alternating current",he:"זרם חילופין",t:"Noun",ex:"Homes use alternating current.",l:3,tp:"חשמל"},
+{id:5016,en:"direct current",he:"זרם ישר",t:"Noun",ex:"Batteries produce direct current.",l:3,tp:"חשמל"},
+{id:5017,en:"high voltage",he:"מתח גבוה",t:"Noun",ex:"High voltage is very dangerous.",l:2,tp:"חשמל"},
+{id:5018,en:"short circuit",he:"קצר חשמלי",t:"Noun",ex:"A short circuit caused the fire.",l:2,tp:"חשמל"},
+{id:5019,en:"power outage",he:"הפסקת חשמל",t:"Noun",ex:"There was a power outage last night.",l:2,tp:"חשמל"},
+{id:5020,en:"electric shock",he:"חשמול",t:"Noun",ex:"Electric shock can be fatal.",l:2,tp:"חשמל"},
+{id:5021,en:"conductor",he:"מוליך",t:"Noun",ex:"Copper is a good conductor.",l:2,tp:"חשמל"},
+{id:5022,en:"insulator",he:"מבדד",t:"Noun",ex:"Rubber is a good insulator.",l:2,tp:"חשמל"},
+{id:5023,en:"ohm",he:"אוהם",t:"Noun",ex:"Resistance is measured in ohms.",l:2,tp:"חשמל"},
+{id:5024,en:"ampere",he:"אמפר",t:"Noun",ex:"The current is 10 amperes.",l:2,tp:"חשמל"},
+{id:5025,en:"watt",he:"ואט",t:"Noun",ex:"The bulb uses 60 watts.",l:2,tp:"חשמל"},
+{id:5026,en:"circuit breaker",he:"מפסק אוטומטי",t:"Noun",ex:"The circuit breaker tripped.",l:2,tp:"חשמל"},
+{id:5027,en:"outlet",he:"שקע",t:"Noun",ex:"Plug into the outlet.",l:1,tp:"חשמל"},
+{id:5028,en:"generator",he:"גנרטור",t:"Noun",ex:"The generator provides backup power.",l:2,tp:"חשמל"},
+{id:5029,en:"capacitor",he:"קבל",t:"Noun",ex:"The capacitor stores energy.",l:3,tp:"חשמל"},
+{id:5030,en:"coil",he:"סליל",t:"Noun",ex:"The coil generates a magnetic field.",l:3,tp:"חשמל"},
+{id:5031,en:"amplifier",he:"מגבר",t:"Noun",ex:"The amplifier boosts the signal.",l:2,tp:"חשמל"},
+{id:5032,en:"relay",he:"ממסר חשמלי",t:"Noun",ex:"The relay controls the circuit.",l:3,tp:"חשמל"},
+{id:5033,en:"overload",he:"עומס יתר",t:"Noun",ex:"The overload tripped the breaker.",l:2,tp:"חשמל"},
+{id:5034,en:"load",he:"עומס",t:"Noun",ex:"The load on the circuit is too high.",l:2,tp:"חשמל"},
+{id:5035,en:"power supply",he:"מתח אספקה",t:"Noun",ex:"The power supply is connected.",l:2,tp:"חשמל"},
+{id:5036,en:"maintenance",he:"אחזקה",t:"Noun",ex:"Regular maintenance prevents failures.",l:2,tp:"חשמל"},
+{id:5037,en:"testing",he:"בדיקות",t:"Noun",ex:"Electrical testing is required.",l:2,tp:"חשמל"},
+{id:5038,en:"safety",he:"בטיחות",t:"Noun",ex:"Safety is the most important thing.",l:1,tp:"חשמל"},
+{id:5039,en:"license",he:"רישיון",t:"Noun",ex:"You need a license to work as an electrician.",l:2,tp:"חשמל"},
+{id:5040,en:"inspection",he:"בדיקת חשמל",t:"Noun",ex:"The annual inspection is mandatory.",l:2,tp:"חשמל"},
+{id:5041,en:"earthing",he:"הארקה לאדמה",t:"Noun",ex:"Earthing protects from electric shock.",l:3,tp:"חשמל"},
+{id:5042,en:"neutral",he:"נקודת אפס",t:"Noun",ex:"The neutral wire is blue.",l:3,tp:"חשמל"},
+{id:5043,en:"phase",he:"פאזה",t:"Noun",ex:"Three phase power is used in industry.",l:3,tp:"חשמל"},
+{id:5044,en:"wiring",he:"מוליכים",t:"Noun",ex:"The wiring needs to be replaced.",l:2,tp:"חשמל"},
+{id:5045,en:"electromagnetic",he:"אלקטרומגנטי",t:"Adj",ex:"Electromagnetic fields surround the wire.",l:3,tp:"חשמל"},
+{id:5046,en:"impedance",he:"עכבה",t:"Noun",ex:"The impedance affects the current flow.",l:3,tp:"חשמל"},
+{id:5047,en:"surge",he:"נחשול מתח",t:"Noun",ex:"A power surge damaged the device.",l:3,tp:"חשמל"},
+{id:5048,en:"installation",he:"מתקן חשמל",t:"Noun",ex:"The electrical installation is complete.",l:2,tp:"חשמל"},
+{id:5049,en:"panel",he:"לוח חשמל",t:"Noun",ex:"The main panel controls all circuits.",l:2,tp:"חשמל"},
+{id:5050,en:"regulations",he:"תקנות",t:"Noun",ex:"Follow the electrical regulations.",l:2,tp:"חשמל"},
 ];
 
 const FL=50;
-const TP=["הכל","אוכל","עבודה","טיולים","רגשות","בריאות","טכנולוגיה","לימודים","טבע","בית","ספורט","כסף","משפחה","בידור","תחבורה","מסעדה","אופנה","שפה","מדע","ערכים","היסטוריה"];
-const TI={"הכל":"🔤","אוכל":"🍕","עבודה":"💼","טיולים":"✈️","רגשות":"❤️","בריאות":"🏥","טכנולוגיה":"💻","לימודים":"📚","טבע":"🌿","בית":"🏠","ספורט":"⚽","כסף":"🏦","משפחה":"👨‍👩‍👧","בידור":"🎭","תחבורה":"🚗","מסעדה":"🍽️","אופנה":"👗","שפה":"🗣️","מדע":"🧠","ערכים":"💪","היסטוריה":"🏛️"};
+const TP=["הכל","אוכל","עבודה","טיולים","רגשות","בריאות","טכנולוגיה","לימודים","טבע","בית","ספורט","כסף","משפחה","בידור","תחבורה","מסעדה","אופנה","שפה","מדע","ערכים","היסטוריה","חשמל"];
+const TI={"הכל":"🔤","אוכל":"🍕","עבודה":"💼","טיולים":"✈️","רגשות":"❤️","בריאות":"🏥","טכנולוגיה":"💻","לימודים":"📚","טבע":"🌿","בית":"🏠","ספורט":"⚽","כסף":"🏦","משפחה":"👨‍👩‍👧","בידור":"🎭","תחבורה":"🚗","מסעדה":"🍽️","אופנה":"👗","שפה":"🗣️","מדע":"🧠","ערכים":"💪","היסטוריה":"🏛️","חשמל":"⚡"};
 const FQ=[
   {s:"I ___ breakfast every morning.",a:"eat",o:["eat","sleep","run","talk"],h:"לאכול"},
   {s:"She feels ___ today.",a:"sad",o:["sad","big","small","happy"],h:"עצוב"},
@@ -1043,7 +1123,7 @@ function playWrong(){
   if(navigator.vibrate)navigator.vibrate(80);
 }
 
-var NONAV=['quiz-done','reverse-done','fill-done','match-done','terms','privacy'];
+var NONAV=['quiz-done','reverse-done','fill-done','match-done','terms','privacy','elecquiz-done'];
 
 function goTo(name){
   var all=document.querySelectorAll('.scr');
@@ -1148,6 +1228,7 @@ function renderHome(){
     {k:'fill',i:'✍️',bg:'#D1FAE5',ti:'השלמת משפטים',su:'מלא את המילה החסרה',p:true},
     {k:'match',i:'🔗',bg:'#FEF3C7',ti:'משחק התאמה',su:'חבר מילה לתרגום',p:true},
     {k:'dictionary',i:'📖',bg:'#F3E8FF',ti:'מילון',su:'חפש מילים',p:false},
+    {k:'elecquiz',i:'⚡',bg:'#FEF9C3',ti:'חידון חשמלאים',su:'מונחים מקצועיים לחשמלאי',p:true},
   ];
   var html='';
   for(var i=0;i<M.length;i++){
@@ -1160,16 +1241,17 @@ function renderHome(){
   }
   e('h-menu').innerHTML=html;
   for(var j=0;j<M.length;j++){
-    (function(m){
-      e('hm'+M.indexOf(m)).onclick=function(){
+    (function(m,idx){
+      e('hm'+idx).onclick=function(){
         if(m.p&&!G.premium){openPaywall();return;}
         if(m.k==='quiz')startQuiz();
         else if(m.k==='reverse')startReverse();
         else if(m.k==='fill')startFill();
         else if(m.k==='match')startMatch();
+        else if(m.k==='elecquiz')startElecQuiz();
         else goTo(m.k);
       };
-    })(M[j]);
+    })(M[j],j);
   }
 }
 
@@ -1376,6 +1458,73 @@ function ansF(opt,correct){
 }
 
 // MATCH
+// ELECTRICIAN QUIZ
+var EQ={words:[],idx:0,score:0};
+
+function startElecQuiz(){
+  if(!G.premium){openPaywall();return;}
+  var elecWords=V.filter(function(w){return w.tp==='חשמל';});
+  EQ.words=sf(elecWords).slice(0,10);
+  EQ.idx=0;EQ.score=0;
+  goTo('elecquiz');renderElecQuiz();
+}
+
+function speakElecWord(){
+  var w=EQ.words[EQ.idx];if(!w)return;
+  var btn=e('eq-speak-btn');
+  btn.textContent='🔊';
+  speak(w.en,null);
+  setTimeout(function(){btn.textContent='🔈';},1500);
+}
+
+function renderElecQuiz(){
+  var w=EQ.words[EQ.idx];if(!w)return;
+  e('eq-counter').textContent=(EQ.idx+1)+'/'+EQ.words.length+' • '+EQ.score+" נק'";
+  e('eq-prog').style.width=(EQ.idx/EQ.words.length*100)+'%';
+  e('eq-ex').textContent=w.ex;
+  e('eq-word').textContent=w.en;
+  e('eq-enc').style.display='none';
+  e('eq-reveal').style.display='none';
+  e('eq-speak-btn').textContent='🔈';
+  var elecPool=V.filter(function(x){return x.tp==='חשמל'&&x.id!==w.id;});
+  var wrong=sf(elecPool).slice(0,3);
+  var os=sf(wrong.concat(w));
+  var h='';
+  for(var i=0;i<os.length;i++){
+    h+='<button class="opt" id="eqopt-'+os[i].id+'" onclick="ansElecQ('+os[i].id+','+w.id+')">'+os[i].he+'</button>';
+  }
+  e('eq-opts').innerHTML=h;
+  // קרא את המונח אוטומטית אחרי שנייה
+  setTimeout(function(){speakElecWord();},600);
+}
+
+function ansElecQ(oid,wid){
+  var w=EQ.words[EQ.idx];
+  var ok=oid===wid;
+  var btns=e('eq-opts').querySelectorAll('.opt');
+  for(var i=0;i<btns.length;i++)btns[i].disabled=true;
+  var cb=e('eqopt-'+wid);var xb=e('eqopt-'+oid);
+  if(cb)cb.classList.add('ok');
+  if(xb&&!ok)xb.classList.add('no');
+  // תמיד הצג את המונח אחרי התשובה
+  e('eq-reveal-word').textContent=w.en;
+  e('eq-reveal').style.display='block';
+  if(ok){EQ.score++;reward(5,10);playCorrect();}
+  else{playWrong();e('eq-enc').textContent=enc();e('eq-enc').style.display='block';}
+  e('eq-counter').textContent=(EQ.idx+1)+'/'+EQ.words.length+' • '+EQ.score+" נק'";
+  setTimeout(function(){
+    EQ.idx++;
+    if(EQ.idx>=EQ.words.length){
+      reward(20,40);
+      var sc=EQ.score;
+      e('eqd-t').textContent=sc>=8?'🏆':sc>=5?'⭐':'💪';
+      e('eqd-s').textContent=sc+'/'+EQ.words.length;
+      e('eqd-m').textContent=sc>=8?'מומחה חשמל! ⚡':sc>=5?'טוב מאוד! המשך להתאמן':'תמשיך לתרגל את המונחים!';
+      goTo('elecquiz-done');
+    } else renderElecQuiz();
+  },1200);
+}
+
 function startMatch(){
   if(!G.premium){openPaywall();return;}
   if(G.mtm)clearInterval(G.mtm);
