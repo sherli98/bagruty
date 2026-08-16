@@ -1494,8 +1494,7 @@ function renderElecQuiz(){
     h+='<button class="opt" id="eqopt-'+os[i].id+'" onclick="ansElecQ('+os[i].id+','+w.id+')">'+os[i].he+'</button>';
   }
   e('eq-opts').innerHTML=h;
-  // קרא את המונח אוטומטית אחרי שנייה
-  setTimeout(function(){speakElecWord();},600);
+  // אל תקרא אוטומטית — המשתמש יחליט מתי לשמוע
 }
 
 function ansElecQ(oid,wid){
